@@ -3,9 +3,15 @@ import './styles.css'
 export const LandingPage = () => {
   return (
     <>
-        <div id='landing-logo-container'>
-            <img src="../../../public/images/logo-landing.png" alt="" />
-        </div>
+        <header id='landing-header'>
+            <div id='landing-logo-container'>
+                <img src="../../../public/images/logo-landing.png" alt="" />
+            </div>
+            <div id='landing-slogan-container'>
+                <h1>Música a medida.</h1>
+            </div>
+        </header>
+
     </>
   )
 }
