@@ -1,0 +1,16 @@
+.buttonorange {
+  height: 48px;
+  width: 320px;
+  background-color: #ff8e0a;
+  border-radius: 0px 16px 0px 16px;
+  border: none;
+  color: white;
+}
+
+.buttonblack {
+  height: 48px;
+  width: 320px;
+  background-color: transparent;
+  border-radius: 0px 16px 0px 16px;
+  color: #26262e;
+}
