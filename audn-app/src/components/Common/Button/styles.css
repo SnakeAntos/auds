@@ -1,16 +1,25 @@
-.buttonorange {
+.button{
   height: 48px;
   width: 320px;
-  background-color: #ff8e0a;
   border-radius: 0px 16px 0px 16px;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  outline: none;
+  margin-top: 7px;
+  margin-bottom: 7px;
+}
+
+.button-orange {
+  background-color: #ff8e0a;
   border: none;
   color: white;
 }
 
-.buttonblack {
-  height: 48px;
-  width: 320px;
+.button-black {
   background-color: transparent;
-  border-radius: 0px 16px 0px 16px;
-  color: #26262e;
+  border-style: solid;
+  border-color: #26262e;
+  border-width: 2px;
 }
