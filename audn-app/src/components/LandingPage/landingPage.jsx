@@ -2,7 +2,7 @@ import "./styles.css";
 import { ButtonOrange } from "../Common/Button/buttonOrange";
 import { ButtonBlack} from "../Common/Button/buttonBlack"
 
-export const LandingPage = () => {
+export const LandingPage = ({ onRegisterClick }) => {
   return (
     <div id="landing-container">
         <img src="../../../public/images/gif-landing.gif" className="landing-background-img" alt="" />
@@ -20,9 +20,9 @@ export const LandingPage = () => {
         </div>
       </header>
       <main id="landing-main">
-        <ButtonOrange text="Registrarse" className="landing-button" id="landing-register-button"/>
-        <ButtonBlack text="Continuar con Google" className="landing-button" id="landing-google-button"/>
-        <ButtonBlack text="Continuar con Apple" className="landing-button" id="landing-apple-button"/>
+        <ButtonOrange text="Registrarse" onClick={onRegisterClick}/>
+        <ButtonBlack text="Continuar con Google"/>
+        <ButtonBlack text="Continuar con Apple"/>
         <button className="button" id="landing-login-button">Iniciar sesión</button>
       </main>
     </div>

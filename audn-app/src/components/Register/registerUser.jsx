@@ -1,6 +1,14 @@
 import { Input } from "../Common/Input/input"
+import { useState } from "react";
 
 export const RegisterUser = () => {
+
+    const [isChecked, setIsChecked] = useState(false);
+
+    const handleCheckboxClick = () => {
+      setIsChecked(!isChecked);
+    };
+
     return (
       <div>
         <div id="register-user-container">
@@ -14,9 +22,12 @@ export const RegisterUser = () => {
                 <Input type="password"/>
             </form>
             <p>Deberá contener al menos 8 caracteres.</p>
-            <div id="register-user-acceptterms">
-                <input type="checkbox"/>
-                <span>He leído y acepto los Términos y Condiciones.</span>
+            <div id="register-user-acceptterms" onClick={handleCheckboxClick}>
+                <img
+                src={isChecked ? '../../../public/images/checkbox-ticked.png' : '../../../public/images/checkbox-empty.png'}
+                alt="Checkbox"
+                />
+                <span>He leído y acepto los <a>Términos</a> y <a>Condiciones.</a></span>
             </div>
         </div>
       </div>

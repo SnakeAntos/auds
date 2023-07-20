@@ -1,6 +1,7 @@
 import {Input} from "../Common/Input/input"
 
 export const RegisterEmail = () => {
+
   return (
     <div id="register-email-container">
         <div id="register-email-title">
@@ -8,7 +9,7 @@ export const RegisterEmail = () => {
         </div>
         <form action="">
             <label>Correo electrónico</label>
-            <Input type="email"/>
+            <Input type="email" />
         </form>
             <p>Deberás poder confirmarlo luego.</p>
     </div>
