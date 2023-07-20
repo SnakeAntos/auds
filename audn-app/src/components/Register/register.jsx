@@ -1,7 +1,5 @@
-import './styles.css'
+import "./styles.css";
 
 export const Register = () => {
-  return (
-    <div></div>
-  )
-}
+  return <div></div>;
+};
