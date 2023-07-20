@@ -6,6 +6,7 @@ position: relative;
 display: flex;
 flex-direction: column;
 justify-content: space-between;
+display: none /*despues sacar*/
 }
 
 .landing-background-img{
