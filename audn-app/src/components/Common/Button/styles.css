@@ -1,8 +1,8 @@
-.button{
+.button {
   height: 48px;
   width: 320px;
   border-radius: 0px 16px 0px 16px;
-  font-family: 'Rubik', sans-serif;
+  font-family: "Rubik", sans-serif;
   font-weight: 500;
   font-size: 16px;
   letter-spacing: 0.5px;
@@ -22,4 +22,20 @@
   border-style: solid;
   border-color: #26262e;
   border-width: 2px;
+}
+
+.button-transparent {
+  height: 80px;
+  width: 320px;
+  border-radius: 0px 16px 0px 16px;
+  font-family: "Rubik", sans-serif;
+  background-color: white;
+  border-color: grey;
+}
+
+.button-grey {
+  background-color: #e4e6e8;
+  border-style: none;
+  border-width: 2px;
+  color: white;
 }
