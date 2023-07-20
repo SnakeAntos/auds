@@ -2,12 +2,14 @@
   height: 48px;
   width: 320px;
   background-color: white;
-  color: #26262e;
+  border-color: #E4E6E8;
   border-radius: 0px 16px 0px 16px;
   outline: none;
   margin: 0;
-  padding: 0;
+  padding: 0 16px;
   font-family: 'Rubik', sans-serif;
+  border-style: solid;
+  border-width: 2px;
 }
 
 .input:focus {
