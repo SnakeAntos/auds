@@ -3,14 +3,23 @@ import { useState } from 'react'
 import { RegisterEmail } from './registerEmail'
 import { RegisterUser } from './registerUser'
 import { ButtonOrange } from '../Common/Button/buttonOrange'
+import { ButtonGrey } from '../Common/Button/buttonGrey'
 
 export const Register = () => {
 
   const [showRegisterEmail, setShowRegisterEmail] = useState(true);
+  const [isButtonOrange, setIsButtonOrange] = useState(false);
+
 
   const handleContinueClick = () => {
     setShowRegisterEmail(false);
   };
+
+    // Funciones para recibir información sobre el estado de los campos de los componentes hijos
+    const handleRegisterEmailFilled = (isFilled) => {
+      setIsButtonOrange(isFilled);
+    };
+  
 
   return (
     <div id='register-container'>
@@ -20,8 +29,15 @@ export const Register = () => {
             </div>
             <h3 id="register-title">Crear cuenta</h3>
         </header>
-      {showRegisterEmail ? <RegisterEmail /> : <RegisterUser />}
-      <ButtonOrange text='Continuar' onClick={handleContinueClick}/>
+      {showRegisterEmail ? (
+        <RegisterEmail onEmailFilled={handleRegisterEmailFilled}/>
+        ) : (
+        <RegisterUser/>)}
+            {isButtonOrange ? (
+        <ButtonOrange text='Continuar' onClick={handleContinueClick} />
+      ) : (
+        <ButtonGrey text='Continuar'/>
+      )}
     </div>
   )
 }

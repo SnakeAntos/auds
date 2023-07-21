@@ -1,14 +1,15 @@
 import { Input } from "../Common/Input/input"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export const RegisterUser = () => {
 
     const [isChecked, setIsChecked] = useState(false);
-
+   
+   
     const handleCheckboxClick = () => {
       setIsChecked(!isChecked);
     };
-
+ 
     return (
       <div>
         <div id="register-user-container">
