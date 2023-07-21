@@ -12,7 +12,7 @@ export const Home1 = () => {
         <div className="musicaya-icons">
           <img
             className="icono1-musicaya"
-            src="../../../public/images/rewind.png"
+            src="../../../public/images/history.svg"
           ></img>
           <img
             className="icono2-musicaya"
