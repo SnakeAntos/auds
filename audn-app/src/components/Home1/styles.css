@@ -46,4 +46,45 @@
   justify-content: center;
   justify-items: center;
   text-align: center;
+  background-color: transparent;
+}
+
+.photo-my1 {
+  position: absolute;
+  z-index: -2;
+  border-radius: 0px 0px 0px 16px;
+  margin-top: 7px;
+}
+
+.photo-my2 {
+  position: absolute;
+  z-index: -2;
+  border-radius: 0px 0px 0px 16px;
+  margin-top: 7px;
+}
+
+.title-cupido {
+  font-family: "Rubik", sans-serif;
+  position: absolute;
+  opacity: 70%;
+}
+
+.title-contextual {
+  font-family: "Rubik", sans-serif;
+  position: absolute;
+}
+
+.cupido-text {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  margin-left: 100px;
+}
+
+.text-cupido {
+  font-family: "Rubik", sans-serif;
+  font-size: 12px;
+  margin-top: 44px;
+  opacity: 50%;
+  max-width: 200px;
 }
