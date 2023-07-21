@@ -1,7 +1,8 @@
 import { ButtonMusicaYa } from "../Common/Button/buttonMusicaYa";
 import "./styles.css";
+import { NavBar } from "../NavBar/NavBar";
 
-export const Home1 = (props) => {
+export const Home1 = () => {
   return (
     <div className="musicaya-container">
       <div className="musicaya-nav">
@@ -55,6 +56,7 @@ export const Home1 = (props) => {
           </div>
         </div>
       </div>
+      <NavBar/>
     </div>
   );
 };
