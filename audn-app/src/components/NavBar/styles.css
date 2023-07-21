@@ -1,0 +1,36 @@
+#navbar-container{
+    height: 96px;
+    width: 100%;
+    background: rgb(255,142,10);
+    background: linear-gradient(0deg, rgba(255,142,10,0.3) 0%, rgba(253,254,255,1) 100%);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 0 auto;
+}
+
+.navbar-item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.navbar-item img{
+    height: 21.5px;
+    width: 22.75px;
+}
+
+.navbar-item p{
+    font-family: 'Rubik', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    color: #838486;
+    margin-top: 10px;
+}
+
