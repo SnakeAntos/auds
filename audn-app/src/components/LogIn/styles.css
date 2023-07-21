@@ -2,24 +2,22 @@
   font-family: "Rubik", sans-serif;
 }
 
-.left-arrow {
-  width: 18px;
-  height: 18px;
-  display: flex;
-  justify-content: left;
-  justify-items: left;
-  align-items: left;
-  margin-top: 15px;
+.login-left-arrow {
   position: absolute;
-  margin-left: 22px;
+  top: 37px;
+  left: 20px;
 }
 
 .login-header {
+  background: rgb(255,142,10);
+  background: linear-gradient(180deg, rgba(255,142,10,0.3) 0%, rgba(253,254,255,1) 100%);
   display: flex;
   flex-direction: row;
   text-align: center;
   justify-content: center;
   justify-items: center;
+  padding-top: 35px;
+padding-bottom: 20px;
 }
 
 .input {
@@ -27,20 +25,26 @@
   border-style: solid;
 }
 
-.title-login {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  justify-items: center;
-  align-items: center;
+.login-title {
+  font-family: 'Rubik', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  margin: 0;
+  color: #26262E;
 }
 
-label {
+.login-container label {
   font-size: 20px;
   display: flex;
   align-items: left;
+  margin-top: 15px;
   margin-bottom: 15px;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.5px;
 }
+
 
 .login-body {
   display: flex;
@@ -54,4 +58,10 @@ label {
 
 .register-footer {
   margin-top: 15vw;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #26262E;
+  letter-spacing: 0.5px;
+  cursor: pointer;
 }
