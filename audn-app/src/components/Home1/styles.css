@@ -6,6 +6,8 @@
   justify-content: center;
   gap: 80px;
   font-family: "Rubik", sans-serif;
+  background: rgb(255,142,10);
+  background: linear-gradient(180deg, rgba(255,142,10,0.3) 0%, rgba(253,254,255,1) 100%);
 }
 
 .musicaya-title {
@@ -18,11 +20,13 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  width: 100px;
+  justify-content: space-around;
 }
 
 .icono1-musicaya {
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
 }
 
 .icono2-musicaya {

@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import "./App.css";
 
-//import { LandingPage } from "./components/LandingPage/landingPage";
-//import { LogIn } from "./components/LogIn/logIn";
-//import { Register } from "./components/Register/register";
+
+import { LandingPage } from "./components/LandingPage/landingPage";
+import { LogIn } from "./components/LogIn/logIn";
+import { Register } from "./components/Register/register";
 
 export const App = () => {
   const [showRegister, setShowRegister] = useState(false);
   const [showRegisterEmail, setShowRegisterEmail] = useState(false);
   const [showLogIn, setShowLogIn] = useState(false);
 
-  // const handleRegisterClick = () => {
+  const handleRegisterClick = () => {
   setShowRegister(true);
   setShowRegisterEmail(true);
   setShowLogIn(false);
@@ -33,5 +34,9 @@ return (
     {showLogIn && <LogIn />}
   </>
 );
+
+     
+
+
 
 export default App;
