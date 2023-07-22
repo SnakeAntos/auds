@@ -1,7 +1,7 @@
 import "./styles.css";
 import { useState } from "react";
 
-export const NavBar = () => {
+export const NavBar = (props) => {
 
     const [activeItem, setActiveItem] = useState('Inicio');
 
@@ -10,7 +10,7 @@ export const NavBar = () => {
     };
 
   return (
-    <div id="navbar-container">
+    <div id="navbar-container" className={props.className}>
         <div id="navbar-home" className={`navbar-item ${activeItem === 'Inicio' ? 'active' : ''}`} onClick={() => handleClick('Inicio')}>
             <img src={activeItem === 'Inicio' ? '../../../public/images/home-active.svg' : '../../../public/images/home-inactive.svg'} alt="" />
             <p style={{ color: activeItem === 'Inicio' ? '#26262E' : '#838486'}}>Inicio</p>
