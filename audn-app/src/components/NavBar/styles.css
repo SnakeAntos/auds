@@ -10,6 +10,11 @@
     margin: 0 auto;
 }
 
+#navbar-container a{
+    height: auto;
+    text-decoration: none;
+}
+
 .navbar-item{
     display: flex;
     flex-direction: column;

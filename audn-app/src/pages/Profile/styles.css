@@ -67,10 +67,8 @@
 }
 
 #profile-playlist-list{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+    display: grid;
+    grid-template-columns: 6fr 6fr;
 }
 
 .profile-playlist-item{
@@ -98,5 +96,6 @@
 
 .profile-navbar{
     background: rgb(102, 149, 175);
-    background: linear-gradient(0deg, rgba(102, 149, 175,0.3) 0%, rgba(253,254,255,1) 100%);
+    background: linear-gradient(0deg, rgb(102, 149, 175, 0.3) 0%, rgba(253,254,255,1) 100%);
+    z-index: 1000;
 }

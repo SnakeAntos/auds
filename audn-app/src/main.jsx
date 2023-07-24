@@ -22,6 +22,12 @@ const router = createBrowserRouter([
     path: "/perfil",
     element: <Profile/>,
   }, 
+
+  // {
+  //   path: "/search",
+  //   element: <Search/>,
+  // }
+
 // {
 //    path: "/cupidoMusical",
 //    element: <CupidoMusical/>,
@@ -30,10 +36,7 @@ const router = createBrowserRouter([
 //    path: "/musicaContextual",
 //    element: <MusicaContextual/>,
 //   },
-//   {
-//    path: "/search",
-//    element: <Search/>,
-//  }
+
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
