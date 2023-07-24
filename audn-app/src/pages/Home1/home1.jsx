@@ -7,7 +7,7 @@ export const Home1 = () => {
     <div className="musicaya-container">
       <div className="musicaya-nav">
         <div className="musicaya-title-nav">
-          <h2 className="musicaya-title"> Musica ya</h2>
+          <h2 className="musicaya-title"> Música ya</h2>
         </div>
         <div className="musicaya-icons">
           <img
@@ -56,7 +56,9 @@ export const Home1 = () => {
           </div>
         </div>
       </div>
-      <NavBar />
+
+      <NavBar className="home-navbar"/>
+
     </div>
   );
 };

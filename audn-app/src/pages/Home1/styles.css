@@ -13,7 +13,8 @@
 .musicaya-title {
   color: #26262e;
   font-family: "Rubik", sans-serif;
-  font-size: 28px;
+  font-size: 26px;
+  padding-top: 30px;
 }
 
 .musicaya-icons {
@@ -22,6 +23,7 @@
   align-items: center;
   width: 100px;
   justify-content: space-around;
+  padding-top: 30px;
 }
 
 .icono1-musicaya {
@@ -91,4 +93,9 @@
   margin-top: 44px;
   opacity: 50%;
   max-width: 200px;
+}
+
+.home-navbar{
+background: rgb(255,142,10);
+background: linear-gradient(0deg, rgba(255,142,10,0.3) 0%, rgba(253,254,255,1) 100%);
 }

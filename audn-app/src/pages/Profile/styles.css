@@ -1,0 +1,103 @@
+#profile-container{
+    height: 100vh;
+    background: rgb(102, 149, 175);
+    background: linear-gradient(180deg, rgba(102, 149, 175,0.3) 0%, rgba(253,254,255,1) 15%);
+    font-family: 'Rubik', sans-serif;
+    padding: 24px;
+}
+
+#profile-settings-icon{
+    position: absolute;
+    top: 56px;
+    right: 32px;
+}
+
+#profile-info-container{
+    padding-top: 24px;
+    text-align: center;
+}
+
+#profile-info-container img{
+    width: 152px;
+    height: 152px;
+    border-radius: 92px;
+}
+
+#profile-info-container h1{
+    font-size: 26px;
+    color: #26262E;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+    line-height: 36px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#profile-info-container h4{
+    color: #26262E;
+    letter-spacing: 0.5px;
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: 0;
+}
+
+#profile-playlists{
+    margin-top: 30px;
+}
+
+#profile-playlists-title{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+
+#profile-playlists-title h3{
+    color: #26262E;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#profile-button-createplaylist{
+    width: 100px;
+    height: 26px;
+    font-size: 12px;
+}
+
+#profile-playlist-list{
+    display: grid;
+    grid-template-columns: 6fr 6fr;
+}
+
+.profile-playlist-item{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    align-items: center;
+}
+
+.profile-playlist-item img{
+    width: 152px;
+    height: 152px;
+    border-radius: 0px 40px 0px 40px;
+}
+
+.profile-playlist-item h4{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+.profile-playlist-item p{
+    margin-top: 0;
+}
+
+.profile-navbar{
+    background: rgb(102, 149, 175);
+    background: linear-gradient(0deg, rgb(102, 149, 175, 0.3) 0%, rgba(253,254,255,1) 100%);
+    z-index: 1000;
+}
