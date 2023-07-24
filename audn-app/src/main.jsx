@@ -5,6 +5,7 @@ import App from "./App";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Home1 } from "./pages/Home1/home1";
 import { Profile } from "./pages/Profile/profile";
+import { Search } from "./pages/Search/search";
 
 const router = createBrowserRouter([
   // contiene la landing page, registro e inicio de sesión
@@ -23,10 +24,10 @@ const router = createBrowserRouter([
     element: <Profile/>,
   }, 
 
-  // {
-  //   path: "/search",
-  //   element: <Search/>,
-  // }
+  {
+    path: "/buscar",
+    element: <Search/>,
+  }
 
 // {
 //    path: "/cupidoMusical",
