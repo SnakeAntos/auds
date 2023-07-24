@@ -34,8 +34,6 @@ export const LogIn = (props) => {
     return password.length >= 8; // Por ejemplo, aquí simplemente comprobamos que tenga al menos 8 caracteres
   };
 
-  const history = useNavigate();
-
   const handleGoBack = () => {
     props.setShowLogIn(false);
   };
@@ -90,14 +88,9 @@ export const LogIn = (props) => {
                   <ButtonOrange
                     text="Iniciar Sesion"
                     className="input-sesion"
-                    onClick={handleLogin}
                   />
                 ) : (
-                  <ButtonGrey
-                    text="Iniciar Sesion"
-                    className="input-sesion"
-                    onClick={handleLogin}
-                  />
+                  <ButtonGrey text="Iniciar Sesion" className="input-sesion" />
                 )}
               </div>
               <h4 className="login-forgot" onClick={handleForgotPasswordClick}>
