@@ -56,7 +56,7 @@ export const Home1 = () => {
           </div>
         </div>
       </div>
-      <NavBar/>
+      <NavBar />
     </div>
   );
 };
