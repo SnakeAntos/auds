@@ -56,7 +56,9 @@ export const Home1 = () => {
           </div>
         </div>
       </div>
+
       <NavBar className="home-navbar"/>
+
     </div>
   );
 };
