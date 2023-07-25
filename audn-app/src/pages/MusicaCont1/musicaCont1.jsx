@@ -1,7 +1,7 @@
 import React from "react";
 import "./styles.css";
 
-export const MusicaCont1 = () => {
+export const MusicaContextual = () => {
   return (
     <div className="musica-cont-nav">
       <img
