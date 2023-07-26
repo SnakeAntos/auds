@@ -4,8 +4,19 @@
   justify-content: center;
   align-items: center;
   width: 100vw;
+  
 }
 .musicCurrentCupid-mainImg {
+    /*agregar querys para tama;os mayores a 400 ya que en ese caso se pierde
+    la proporcion de la imagen demasiado...*/
+  width: 75vw;
+  height: 33vh;
+  margin-top: 10%;
+  background-color: brown;
+  border-radius: 0 50px 0 50px;
+}
+
+.musicCurrentCupid-noImg{
   width: 75vw;
   height: 33vh;
   margin-top: 10%;
@@ -25,7 +36,6 @@
   padding: 0;
   margin: 0;
   cursor: pointer;
-
   background-image: url("../../../../public/images/likebtn.png");
   background-repeat: no-repeat;
   background-size: contain;
@@ -46,10 +56,11 @@
   }
 
   .musicCurrentCupid-theme_name{
+    margin-top: -20px;
     width: 100vw;
     text-align: center;
     font-family: 'Rubik', sans-serif;
-    font-size: 1rem;
+    font-size: 1.2rem;
     color: #26262E;
-    font-weight: 400;
+    font-weight: 500;    
   }
