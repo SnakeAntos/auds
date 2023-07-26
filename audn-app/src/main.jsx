@@ -6,7 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Home1 } from "./pages/Home1/home1";
 import { Profile } from "./pages/Profile/profile";
 import { Search } from "./pages/Search/search";
-import { MusicaContextual } from "./pages/MusicaCont1/musicaCont1";
+import { MusicaContextual } from "./pages/MusicaContextual/musicaContextual";
 import { CupidoMusical } from "./pages/CupidoMusical/cupidomusical";
 
 const router = createBrowserRouter([
@@ -18,28 +18,27 @@ const router = createBrowserRouter([
 
   {
     path: "/home",
-    element: <Home1/>
+    element: <Home1 />,
   },
 
   {
     path: "/perfil",
-    element: <Profile/>,
-  }, 
+    element: <Profile />,
+  },
 
   {
     path: "/buscar",
-    element: <Search/>,
+    element: <Search />,
   },
   {
     path: "/musicaContextual",
-    element: <MusicaContextual/>,
-   },
+    element: <MusicaContextual />,
+  },
 
-{
-   path: "/cupidoMusical",
-   element: <CupidoMusical/>,
-  }, 
-
+  {
+    path: "/cupidoMusical",
+    element: <CupidoMusical />,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

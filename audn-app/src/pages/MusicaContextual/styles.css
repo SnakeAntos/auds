@@ -1,0 +1,39 @@
+.musica-cont-nav {
+  font-family: "Rubik", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.login-left-arrow {
+  position: absolute;
+  top: 22px;
+}
+
+.musica-cont {
+  display: flex;
+  flex-direction: row;
+}
+
+.musica-cont-title {
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+.musica-cont-body {
+  margin-top: 40px;
+  letter-spacing: 0.5px;
+}
+
+.musicacont-title1 {
+  opacity: 67%;
+}
+
+.musica-cont-buttons-fit {
+  display: flex;
+  flex-direction: row;
+}

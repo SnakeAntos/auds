@@ -1,10 +1,10 @@
-
 import "./App.css";
 import React, { useState, useEffect } from "react";
 
 import { LandingPage } from "./components/LandingPage/landingPage";
 import { LogIn } from "./components/LogIn/logIn";
 import { Register } from "./components/Register/register";
+import { MusicaContextual } from "./pages/MusicaContextual/musicaContextual";
 
 export const App = () => {
   const [showRegister, setShowRegister] = useState(false);
@@ -23,8 +23,8 @@ export const App = () => {
     setShowRegister(false);
   };
 
-   // Función asincrónica para obtener todos los usuarios
-   const fetchUsers = async () => {
+  // Función asincrónica para obtener todos los usuarios
+  const fetchUsers = async () => {
     try {
       const response = await fetch("http://localhost:3001/users/allusers");
       const data = await response.json();
@@ -37,23 +37,10 @@ export const App = () => {
   useEffect(() => {
     fetchUsers();
   }, []);
-  
+
   return (
     <>
-      {!showRegister && !showLogIn && (
-        <LandingPage
-          onRegisterClick={handleRegisterClick}
-          onLogInClick={handleLogInClick}
-        />
-      )}
-      {showRegister && (
-        <Register
-          showRegisterEmail={showRegisterEmail}
-          setShowRegister={setShowRegister}
-        />
-      )}
-      {showLogIn && <LogIn setShowLogIn={setShowLogIn} />}
-      
+      <MusicaContextual />
     </>
   );
 };
