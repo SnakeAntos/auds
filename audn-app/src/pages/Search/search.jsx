@@ -1,7 +1,7 @@
 import { Input } from '../../components/Common/Input/input'
 import { NavBar } from '../../components/NavBar/NavBar'
 import './styles.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { SearchTopItem } from './searchtop20item'
 
 
@@ -9,6 +9,7 @@ import { SearchTopItem } from './searchtop20item'
 export const Search = () => {
 
     const [inputFocused, setInputFocused] = useState(false);
+    const [topSongs, setTopSongs] = useState([])
 
     const handleInputFocus = () => {
       setInputFocused(true);
@@ -17,6 +18,22 @@ export const Search = () => {
     const handleInputBlur = () => {
         setInputFocused(false);
       };
+
+       // Función asincrónica para obtener las canciones
+       const fetchSongs = async () => {
+        try {
+          const response = await fetch("http://localhost:3001/songs/allsongs");
+          const data = await response.json();
+          const top20Songs = data.slice(0, 20); // Obtener solo las primeras 20 canciones
+          setTopSongs(top20Songs);
+        } catch (error) {
+          console.error("Error al obtener las canciones:", error);
+        }
+      };
+
+        useEffect(() => {
+            fetchSongs();
+        }, []);
 
 
 
@@ -35,16 +52,14 @@ export const Search = () => {
                 <div id='search-list'>
                     <h3>{inputFocused ? 'Búsquedas recientes' : 'Top 20s'}</h3>
                     <div id='search-list-top-songs'>
-                        <SearchTopItem
-                            image='../../../images/song-image.jpg'
-                            songName='Flowers'
-                            artistName='Miley Cyrus'
-                        />
-                        <SearchTopItem
-                            image='../../../images/song-image.jpg'
-                            songName='Flowers'
-                            artistName='Miley Cyrus'
-                        />
+                    {topSongs.map((song) => (
+                    <SearchTopItem
+                        key={song.id} // Asegúrate de que cada elemento tenga una clave única
+                        image={song.img}
+                        songName={song.song_name}
+                        artistName={song.artist}
+                    />
+                    ))}
                     </div>
                 </div>
             </div>
