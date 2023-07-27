@@ -25,6 +25,13 @@
     background-color: rgb(204, 130, 33);
     border-radius: 100px;
     position: relative;
-    
+    background-size: contain;
+    margin-left: -10px;    
 
 }
+
+
+  
+  
+  
+  

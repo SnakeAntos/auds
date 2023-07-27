@@ -5,30 +5,56 @@ import { MusicCurrentCupid } from "../../pages/CupidoMusical/MusicCurrentCupid";
 import { CurrentMatches } from "../../pages/CupidoMusical/CurrentMatches";
 import { useState, useEffect } from "react";
 
-
 export const CupidoMusical = () => {
-    const [songs, setSongs] = useState([]);
+  const [songRandom, setSongRandom] = useState([]);
+  const [likedSongs, setLikedSongs] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:3001/songs/random/obtain")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("error al acceder al endpoint");
+        }
+        return response.json();
+      })
+      .then((data) => setSongRandom(data))
+      .catch((error) => {
+        
+        console.error("fetch error:", error);
+      });
+  }, []);
 
-    useEffect(() => {
-           fetch("http://localhost:3001/songs/allsongs")
-          .then((response) => response.json())
-          .then((data) => setSongs(data));
-      }, []);
+  const handleNextSong = () => {
+    fetch("http://localhost:3001/songs/random/obtain")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("error al acceder al endpoint");
+        }
+        return response.json();
+      })
+      .then((data) => setSongRandom(data))
+      .catch((error) => {
+        
+        console.error("fetch error:", error);
+      });
+      
+  };
 
-      const getRandomSong = () => {
-        if(songs.length === 0) return null;
-        const randomIndex = Math.floor(Math.random() * songs.length)
-        return songs[randomIndex];
-      }
-
-      const randomSong = getRandomSong();
-
+  const handleLikedSong = () => {
+    setLikedSongs((prevLikedSongs) => [...prevLikedSongs, songRandom]);
+  };
   return (
     <>
       <div className="cupidoMusical-container">
         <ComponentTitle title="Cupido Musical"></ComponentTitle>
-        <MusicCurrentCupid song={randomSong}></MusicCurrentCupid>
-        <CurrentMatches title="Matches actuales"></CurrentMatches>
+        <MusicCurrentCupid
+          onLikeSong={handleLikedSong}
+          onNextSong={handleNextSong}
+          song={songRandom}
+        ></MusicCurrentCupid>
+        <CurrentMatches
+          likedSongs={likedSongs}
+          title="Matches actuales"
+        ></CurrentMatches>
         <ButtonOrange text="Crear Playlist"></ButtonOrange>
       </div>
     </>

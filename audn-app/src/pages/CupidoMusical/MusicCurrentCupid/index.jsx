@@ -1,30 +1,37 @@
 import "./styles.css";
 
-export const MusicCurrentCupid = ({song}) => {
-  
- 
-  
+export const MusicCurrentCupid = ({song, onNextSong, onLikeSong}) => { 
+
+  const handleNextSong = () => {
+    onNextSong();
+  }
+  const handleLike = () => {    
+    onLikeSong();
+  };
+
+  const handleLikeAndNext = () =>{
+    onLikeSong();
+    onNextSong();
+  }
   
   return (
     <>
       <div className="musicCurrentCupid-container">
-      {song && song.imageUrl ? (
+      {song && song.img ? (
           <div
             className="musicCurrentCupid-mainImg"
-            style={{ backgroundImage: `url(${song.imageUrl})` }}
+            style={{ backgroundImage: `url(${song.img})` }}
           ></div>
         ) : (
           <div className="musicCurrentCupid-noImg">
-            <p>No se obtuvo la imagen de la canción.</p>
-            {/* Aquí puedes mostrar una imagen genérica en caso de que no haya una imagen */}
-            {/* <img src="/ruta/a/imagen-generica.jpg" alt="Imagen Genérica" /> */}
+            <p>No se obtuvo la imagen de la canción.</p>            
           </div>
         )}
         <div className="musicCurrentCupid-buttons_container">
-          <button className="musicCurrentCupid-buttona"></button>
-          <button className="musicCurrentCupid-buttonb"></button>
+          <button className="musicCurrentCupid-buttona" onClick={handleLikeAndNext}></button>
+          <button className="musicCurrentCupid-buttonb" onClick={handleNextSong}></button>
         </div>
-        <p className="musicCurrentCupid-theme_name">theme name</p>
+        <p className="musicCurrentCupid-theme_name">{song.song_name}</p>
       </div>
     </>
   );
