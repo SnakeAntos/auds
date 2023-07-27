@@ -73,6 +73,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
 }
 
 .search-top-song-image{
@@ -98,3 +99,39 @@
     color: #838486;
 }
 
+.overlay{
+    display: none;
+}
+
+.overlay.selected{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 152px;
+    height: 152px;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#search-top-item-play-icon{
+    width: 50px;
+    fill: white;
+}
+
+#search-top-item-other-options img{
+    width: 30px;
+}
+
+#search-top-item-other-options{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+#search-top-item-dots-icon{
+    fill: #ffffff;
+}

@@ -35,8 +35,6 @@ export const Search = () => {
             fetchSongs();
         }, []);
 
-
-
     return(
         <>
             <div id='search-container'>
@@ -50,17 +48,21 @@ export const Search = () => {
                     <img src="../../../images/cross.svg" className="search-bar-icon" id="search-bar-right-icon" alt="" />}
                 </div>
                 <div id='search-list'>
-                    <h3>{inputFocused ? 'Búsquedas recientes' : 'Top 20s'}</h3>
-                    <div id='search-list-top-songs'>
-                    {topSongs.map((song) => (
-                    <SearchTopItem
-                        key={song.id} // Asegúrate de que cada elemento tenga una clave única
-                        image={song.img}
-                        songName={song.song_name}
-                        artistName={song.artist}
-                    />
-                    ))}
-                    </div>
+                    {!inputFocused && (
+                        <>
+                        <h3>Top 20s</h3>
+                        <div id='search-list-top-songs'>
+                            {topSongs.map((song) => (
+                                <SearchTopItem
+                                    key={song.id_song}
+                                    image={song.img}
+                                    songName={song.song_name}
+                                    artistName={song.artist}
+                                />
+                            ))}
+                        </div>
+                        </>
+                    )}
                 </div>
             </div>
             <NavBar id='search-navbar'/>
