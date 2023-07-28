@@ -53,6 +53,7 @@
     top: -36px;
     left: 280px;
     cursor: pointer;
+    z-index: 3000;
 }
 
 #search-list h3{
@@ -113,12 +114,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
 }
 
-#search-top-item-play-icon{
+#search-top-item-play-icon, #search-top-item-pause-icon{
     width: 50px;
     fill: white;
+    margin-bottom: 10px;
 }
 
 #search-top-item-other-options img{
@@ -133,5 +135,48 @@
 }
 
 #search-top-item-dots-icon{
-    fill: #ffffff;
+    width: 30px;
+}
+
+#search-list-results-title{
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    font-weight: 400;
+    color: #838486;
+    margin-top: 0;
+}
+
+.search-result-item{
+    display: flex;
+    flex: row;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.search-result-item-song-description{
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+}
+
+.search-result-item-song-image{
+    width: 48px;
+    height: 48px;
+}
+
+.search-result-item-song-name{
+    margin: 5px 0px;
+    font-size: 14px;
+    color: #26262E;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+
+}
+
+.search-result-item-song-info{
+    margin: 0;
+    font-size: 12px;
+    color: #838486;
+    font-weight: 400;
+    letter-spacing: 0.5px;
 }

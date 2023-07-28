@@ -1,7 +1,6 @@
 import './styles.css'
 import { useState } from 'react';
-import { PlayIcon } from './play-icon';
-import { PauseIcon } from './pause-icon';
+import { PlayIcon, PauseIcon, ThreeDots } from '../../components/Common/Icons/icons';
 
 export const SearchTopItem = (props) => {
     const [isSelected, setIsSelected] = useState(false);
@@ -28,9 +27,9 @@ export const SearchTopItem = (props) => {
             className="search-top-item-container"
             onClick={handleItemClick}>
             <div className={`overlay ${isSelected ? "selected" : ""}`}>
-                {isPlaying ? <PauseIcon onClick={handlePlayClick} fill="#ffffff"/> : <PlayIcon onClick={handlePlayClick} fill="#ffffff"/>}  
+                {isPlaying ? <PauseIcon onClick={handlePlayClick} fill="#ffffff" id="search-top-item-pause-icon"/> : <PlayIcon onClick={handlePlayClick} fill="#ffffff" id="search-top-item-play-icon"/>}  
                 <div id='search-top-item-other-options'>
-                    <img src="../../../images/three-dots-icon.svg" alt="" id='search-top-item-dots-icon'/>
+                    <ThreeDots fill="#ffffff" id="search-top-item-dots-icon"/>
                     <img src={isLiked ? '../../../images/like-active.svg' : '../../../images/like-inactive.svg'} alt=""onClick={handleLikeClick}/>
                 </div>
             </div>
