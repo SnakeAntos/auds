@@ -7,7 +7,6 @@ import { Home1 } from "./pages/Home1/home1";
 import { Profile } from "./pages/Profile/profile";
 import { Search } from "./pages/Search/search";
 import { MusicaContextual } from "./pages/MusicaContextual/musicaContextual";
-import { CupidoMusical } from "./pages/CupidoMusical/cupidomusical";
 
 const router = createBrowserRouter([
   // contiene la landing page, registro e inicio de sesión
@@ -35,10 +34,10 @@ const router = createBrowserRouter([
     element: <MusicaContextual />,
   },
 
-  {
-    path: "/cupidoMusical",
-    element: <CupidoMusical />,
-  },
+  //{
+  //  path: "/cupidoMusical",
+  //  element:
+  //},
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

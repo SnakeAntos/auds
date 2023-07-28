@@ -5,6 +5,12 @@
   justify-content: center;
   flex-direction: column;
   text-align: center;
+  background: rgb(255, 142, 10);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 142, 10, 0.3) 0%,
+    rgba(253, 254, 255, 1) 100px
+  );
 }
 
 .login-left-arrow {
@@ -30,10 +36,35 @@
 }
 
 .musicacont-title1 {
-  opacity: 67%;
+  opacity: 80%;
+}
+
+.musica-contextual-container {
+  display: flex;
+
+  max-height: 180px;
+  flex-direction: row;
+}
+
+.musica-contextual-box {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 300px;
+  align-items: center;
+  justify-content: center;
 }
 
 .musica-cont-buttons-fit {
+  max-width: 373px; /* Limit the maximum width of each element to 300px */
+  box-sizing: border-box; /* Include padding and border in the width calculation */
+  padding: 1px; /* Add padding to create space between elements */
+  text-align: center; /* Center the button within the div */
+  opacity: 60%;
   display: flex;
-  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.crear-playlist-button {
+  margin-top: 140px;
 }
