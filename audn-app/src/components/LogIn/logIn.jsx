@@ -5,6 +5,7 @@ import { RecupCont } from "../RecupCont/recup";
 import { useState } from "react";
 import { ButtonOrange } from "../Common/Button/buttonOrange";
 import { useAuth } from "../../context/authContext";
+import { useNavigate } from "react-router-dom";
 
 export const LogIn = (props) => {
   const [showRecupCont, setShowRecupCont] = useState(false);
@@ -13,6 +14,7 @@ export const LogIn = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  const navigate = useNavigate()
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -44,11 +46,18 @@ export const LogIn = (props) => {
   };
 
   const handleLogin = () => {
-    login("josefina", "12345678")
-    .then(data)
-    //si trajo access token, redureccionar para home
-    //si no trajo access token, da error
-  }
+    login(username, password)
+    .then(data => {
+      if (data.accessToken) {
+        navigate("/home");
+      } else {
+        console.log("Error: No se recibió el token de acceso.");
+      }
+    })
+    .catch(error => {
+      console.error("Error al iniciar sesión:", error);
+    });
+  };
 
   const handleUsernameChange = (event) => {
     const newUsername = event.target.value;
@@ -83,7 +92,6 @@ export const LogIn = (props) => {
               <label htmlFor="username">Nombre de Usuario o E-mail:</label>
               <Input
                 className="login-input-name"
-                placeholder="mara_pg"
                 type="text"
                 id="username"
                 name="username"
