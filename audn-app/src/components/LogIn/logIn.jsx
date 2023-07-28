@@ -3,15 +3,16 @@ import { Input } from "../Common/Input/input";
 import { ButtonGrey } from "../Common/Button/buttonGrey";
 import { RecupCont } from "../RecupCont/recup";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { ButtonOrange } from "../Common/Button/buttonOrange";
+import { useAuth } from "../../context/authContext";
 
 export const LogIn = (props) => {
   const [showRecupCont, setShowRecupCont] = useState(false);
+  const {login, user} = useAuth()
 
-  //aca
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -41,6 +42,24 @@ export const LogIn = (props) => {
   const handleForgotPasswordClick = () => {
     setShowRecupCont(true);
   };
+
+  const handleLogin = () => {
+    login("josefina", "12345678")
+    .then(data)
+    //si trajo access token, redureccionar para home
+    //si no trajo access token, da error
+  }
+
+  const handleUsernameChange = (event) => {
+    const newUsername = event.target.value;
+    setUsername(newUsername);
+  }
+
+  const handlePasswordChange = (event) => {
+    const newPassword = event.target.value;
+    setPassword(newPassword);
+  }
+
   return (
     <div className="login-container">
       {showRecupCont ? (
@@ -69,6 +88,7 @@ export const LogIn = (props) => {
                 id="username"
                 name="username"
                 value={username}
+                onChange={handleUsernameChange}
               />
             </div>
             <div className="login-btn2">
@@ -79,6 +99,7 @@ export const LogIn = (props) => {
                 id="password"
                 name="password"
                 value={password}
+                onChange={handlePasswordChange}
               />
             </div>
 
@@ -88,9 +109,10 @@ export const LogIn = (props) => {
                   <ButtonOrange
                     text="Iniciar Sesion"
                     className="input-sesion"
+                    onClick={handleLogin}
                   />
                 ) : (
-                  <ButtonGrey text="Iniciar Sesion" className="input-sesion" />
+                  <ButtonGrey text="Iniciar Sesion" className="input-sesion"/>
                 )}
               </div>
               <h4 className="login-forgot" onClick={handleForgotPasswordClick}>

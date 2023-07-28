@@ -1,4 +1,4 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useState } from "react";
 import { checkCredentials } from "../services/audn-API";
 
 const authContext = createContext();
@@ -18,9 +18,15 @@ const AuthProvider = ({ children }) => {
         }
         });
     }
+    const logout = () => {
+        localStorage.removeItem('token')
+        setUser(null);
+      }
     return <authContext.Provider value={{ user, login, logout }}>{children}</authContext.Provider>;
 }
 
+
+export {AuthProvider, authContext, useAuth}
 
 
 

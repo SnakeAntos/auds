@@ -1,13 +1,14 @@
-const BASE_URL = process.env.REACT_APP_AUDN_API_REST;
+const BASE_URL = "http://localhost:3001"
+//import.meta.env.AUDN_API_REST;
 
-  export const checkCredentials = async (email, password) => { //recibe email y password como parametros
+  export const checkCredentials = async (username, password) => { //recibe email y password como parametros
     const url = `${BASE_URL}/users/login`; //va al endpoint
     const options = {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ username, password }),
     };
   
     return fetch(url, options)
@@ -18,7 +19,3 @@ const BASE_URL = process.env.REACT_APP_AUDN_API_REST;
   };
   
   
-  
-  
-  
-  export{login}
