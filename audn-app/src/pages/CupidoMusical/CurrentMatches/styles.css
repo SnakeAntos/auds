@@ -1,0 +1,37 @@
+.currentMatches-container{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.currentMatches-title{
+    text-align: center;
+    font-family: 'Rubik', sans-serif;
+    font-size: 1rem;
+    color: #26262E;
+    font-weight: 400;    
+}
+.currentMatches-imgs_container{
+    margin-top: 8%;
+    display: flex;
+    height: 10vh;
+    flex-direction: row-reverse;
+    
+}
+.currentMatches-song_img{
+    width: 50px;
+    height: 50px;
+    background-color: rgb(204, 130, 33);
+    border-radius: 100px;
+    position: relative;
+    background-size: contain;
+    margin-left: -10px;    
+
+}
+
+
+  
+  
+  
+  

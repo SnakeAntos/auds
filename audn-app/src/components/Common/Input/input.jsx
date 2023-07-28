@@ -10,6 +10,7 @@ export const Input = (props) => {
         placeholder={props.placeholder} 
         onFocus={props.onFocus} 
         onBlur={props.onBlur}
+        onInput={props.onInput}
         value={props.value}>
           {props.text}
       </input>

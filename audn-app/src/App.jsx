@@ -36,6 +36,7 @@ export const App = () => {
   useEffect(() => {
     fetchUsers();
   }, []);
+
   
   return (
     <>
