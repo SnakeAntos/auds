@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 import { LandingPage } from "./components/LandingPage/landingPage";
 import { LogIn } from "./components/LogIn/logIn";
 import { Register } from "./components/Register/register";
-import { MusicaContextual } from "./pages/MusicaContextual/musicaContextual";
 
 export const App = () => {
   const [showRegister, setShowRegister] = useState(false);
@@ -40,7 +39,19 @@ export const App = () => {
 
   return (
     <>
-      <MusicaContextual />
+      {!showRegister && !showLogIn && (
+        <LandingPage
+          onRegisterClick={handleRegisterClick}
+          onLogInClick={handleLogInClick}
+        />
+      )}
+      {showRegister && (
+        <Register
+          showRegisterEmail={showRegisterEmail}
+          setShowRegister={setShowRegister}
+        />
+      )}
+      {showLogIn && <LogIn setShowLogIn={setShowLogIn} />}
     </>
   );
 };
