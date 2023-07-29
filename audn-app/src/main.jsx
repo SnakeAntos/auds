@@ -6,7 +6,11 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Home1 } from "./pages/Home1/home1";
 import { Profile } from "./pages/Profile/profile";
 import { Search } from "./pages/Search/search";
-import { MusicaContextual } from "./pages/MusicaContextual/musicaContextual";
+
+import { MusicaContextual } from "./pages/MusicaCont1/musicaCont1";
+import { CupidoMusical } from "./pages/CupidoMusical/cupidomusical";
+import { AppProviders } from "./context";
+
 
 const router = createBrowserRouter([
   // contiene la landing page, registro e inicio de sesión
@@ -34,6 +38,12 @@ const router = createBrowserRouter([
     element: <MusicaContextual />,
   },
 
+  {
+   path: "/cupidoMusical",
+   element: <CupidoMusical/>,
+  }, 
+
+
   //{
   //  path: "/cupidoMusical",
   //  element:
@@ -42,6 +52,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AppProviders>
+      <RouterProvider router={router} />
+    </AppProviders>
   </React.StrictMode>
 );

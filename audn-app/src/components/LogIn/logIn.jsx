@@ -3,15 +3,18 @@ import { Input } from "../Common/Input/input";
 import { ButtonGrey } from "../Common/Button/buttonGrey";
 import { RecupCont } from "../RecupCont/recup";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { ButtonOrange } from "../Common/Button/buttonOrange";
+import { useAuth } from "../../context/authContext";
+import { useNavigate } from "react-router-dom";
 
 export const LogIn = (props) => {
   const [showRecupCont, setShowRecupCont] = useState(false);
+  const {login, user} = useAuth()
 
-  //aca
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  const navigate = useNavigate()
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -41,6 +44,31 @@ export const LogIn = (props) => {
   const handleForgotPasswordClick = () => {
     setShowRecupCont(true);
   };
+
+  const handleLogin = () => {
+    login(username, password)
+    .then(data => {
+      if (data.accessToken) {
+        navigate("/home");
+      } else {
+        console.log("Error: No se recibió el token de acceso.");
+      }
+    })
+    .catch(error => {
+      console.error("Error al iniciar sesión:", error);
+    });
+  };
+
+  const handleUsernameChange = (event) => {
+    const newUsername = event.target.value;
+    setUsername(newUsername);
+  }
+
+  const handlePasswordChange = (event) => {
+    const newPassword = event.target.value;
+    setPassword(newPassword);
+  }
+
   return (
     <div className="login-container">
       {showRecupCont ? (
@@ -64,11 +92,11 @@ export const LogIn = (props) => {
               <label htmlFor="username">Nombre de Usuario o E-mail:</label>
               <Input
                 className="login-input-name"
-                placeholder="mara_pg"
                 type="text"
                 id="username"
                 name="username"
                 value={username}
+                onChange={handleUsernameChange}
               />
             </div>
             <div className="login-btn2">
@@ -79,6 +107,7 @@ export const LogIn = (props) => {
                 id="password"
                 name="password"
                 value={password}
+                onChange={handlePasswordChange}
               />
             </div>
 
@@ -88,9 +117,10 @@ export const LogIn = (props) => {
                   <ButtonOrange
                     text="Iniciar Sesion"
                     className="input-sesion"
+                    onClick={handleLogin}
                   />
                 ) : (
-                  <ButtonGrey text="Iniciar Sesion" className="input-sesion" />
+                  <ButtonGrey text="Iniciar Sesion" className="input-sesion"/>
                 )}
               </div>
               <h4 className="login-forgot" onClick={handleForgotPasswordClick}>
