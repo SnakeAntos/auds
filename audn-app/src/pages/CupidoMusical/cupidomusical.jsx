@@ -1,3 +1,7 @@
+
+import React from "react";
+
+
 import { ButtonOrange } from "../../components/Common/Button/buttonOrange";
 import "./styles.css";
 import { ComponentTitle } from "../../components/Common/ComponentTitle";
@@ -123,3 +127,4 @@ export const CupidoMusical = () => {
 };
 
 export default CupidoMusical;
+

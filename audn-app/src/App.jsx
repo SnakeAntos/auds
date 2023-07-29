@@ -1,4 +1,3 @@
-
 import "./App.css";
 import React, { useState, useEffect } from "react";
 
@@ -23,8 +22,8 @@ export const App = () => {
     setShowRegister(false);
   };
 
-   // Función asincrónica para obtener todos los usuarios
-   const fetchUsers = async () => {
+  // Función asincrónica para obtener todos los usuarios
+  const fetchUsers = async () => {
     try {
       const response = await fetch("http://localhost:3001/users/allusers");
       const data = await response.json();
@@ -37,7 +36,7 @@ export const App = () => {
     fetchUsers();
   }, []);
 
-  
+
   return (
     <>
       {!showRegister && !showLogIn && (
@@ -53,7 +52,6 @@ export const App = () => {
         />
       )}
       {showLogIn && <LogIn setShowLogIn={setShowLogIn} />}
-      
     </>
   );
 };
