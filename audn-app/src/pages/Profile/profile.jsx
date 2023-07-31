@@ -1,9 +1,22 @@
 import "./styles.css";
+import { useEffect } from "react";
 import { NavBar } from "../../components/NavBar/NavBar";
 import {ButtonOrange} from "../../components/Common/Button/buttonOrange"
 import { ProfilePlaylistItem } from "./profilePlaylistItem";
+import { useAuth } from "../../context/authContext";
+import { useNavigate } from "react-router";
 
 export const Profile = () => {
+
+  const {user} = useAuth()
+  const navigate = useNavigate()
+
+
+  useEffect(() => {
+    console.log(user);
+    (user == null) && navigate("/");
+  }, [])
+
   return (
     <>
       <div id="profile-container">

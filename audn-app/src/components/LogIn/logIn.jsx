@@ -45,18 +45,21 @@ export const LogIn = (props) => {
     setShowRecupCont(true);
   };
 
+
   const handleLogin = () => {
-    login(username, password)
-    .then(data => {
-      if (data.accessToken) {
-        navigate("/home");
-      } else {
-        console.log("Error: No se recibió el token de acceso.");
-      }
-    })
-    .catch(error => {
-      console.error("Error al iniciar sesión:", error);
-    });
+    login(username, password);
+    navigate("/home");
+    // login(username, password)
+    // .then(data => {
+    //   if (data.accessToken) {
+    //     navigate("/home");
+    //   } else {
+    //     console.log("Error: No se recibió el token de acceso.");
+    //   }
+    // })
+    // .catch(error => {
+    //   console.error("Error al iniciar sesión:", error);
+    // });
   };
 
   const handleUsernameChange = (event) => {
