@@ -5,13 +5,11 @@ import React, { useState } from "react";
 import { LandingPage } from "./components/LandingPage/landingPage";
 import { LogIn } from "./components/LogIn/logIn";
 import { Register } from "./components/Register/register";
-import { useAuth } from "./context/authContext";
 
 export const App = () => {
   const [showRegister, setShowRegister] = useState(false);
   const [showRegisterEmail, setShowRegisterEmail] = useState(false);
   const [showLogIn, setShowLogIn] = useState(false);
-  const {user} = useAuth
 
   const handleRegisterClick = () => {
     setShowRegister(true);
@@ -23,6 +21,7 @@ export const App = () => {
     setShowLogIn(true);
     setShowRegister(false);
   };
+
 
   
   return (

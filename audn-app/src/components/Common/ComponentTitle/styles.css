@@ -1,0 +1,23 @@
+.componentTitle-container{
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.componentTitle-backArrow{
+    background-image: url("/images/arrow-back.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 17px;
+    width: 17px;
+    position: fixed;
+    left: 7%;
+    
+}
+.componentTitle-title{
+    font-family: 'Rubik', sans-serif;
+    font-size: 26px;
+    color: #26262E;
+    font-weight: 400;
+}
