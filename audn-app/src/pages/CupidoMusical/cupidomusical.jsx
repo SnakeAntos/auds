@@ -63,35 +63,36 @@ export const CupidoMusical = () => {
     })
       .then((response) => {
         if (!response.ok) {
+          console.log("error", response)
           throw new Error("Error al crear playlist");
-        }
 
+        }        
         return response.json();
       })
-      .then(async (data) => {        
-        const playlistId = 9; //no puedo con esto// si pongo data.id queda undefined
+      .then((data) => {  
+        console.log("el id es",data.id_playlist);      
+        const playlistId = Number(data.id_playlist); //no puedo con esto// si pongo data.id queda undefined
         setIsLoading(false);
         handleAddSongsToPlaylist(playlistId, songsIdList);
-        console.log("esta es la data", data);
+        
       })
       .catch((error) => {
-        console.error("Error al crear la playlist:", errorMessage);
+        console.error("Error al crear la playlist:", error);
       });
       
   };
 
   // Función para agregar las canciones a la playlist una vez creada
   const handleAddSongsToPlaylist = (playlistId, songsIdList) => {
-    songsIdList.forEach((songId) => {
-      console.log(songId, playlistId, songsIdList);
+    songsIdList.forEach((songId) => {      
       fetch("http://localhost:3001/songslists/new", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          songID: playlistId,
-          playlistID: songId,
+          songID: songId,
+          playlistID: playlistId,
         }),
       })
         .then((response) => {
