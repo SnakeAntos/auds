@@ -1,16 +1,18 @@
 import "./styles.css";
 import { Input } from "../Common/Input/input";
 import { ButtonGrey } from "../Common/Button/buttonGrey";
-import LeftArrow from "../../../public/images/left-arrow.png"
+import LeftArrow from "../../../public/images/left-arrow.png";
+import { Link } from 'react-router-dom';
 
 export const RecupCont = (props) => {
   return (
     <div className="login-container">
       <div className="login-nav">
+        <Link to="/perfil">
         <img
           src={LeftArrow}
           className="login-left-arrow"
-        ></img>
+        ></img></Link>
         <div className="login-header">
           <h3 className="login-title">Recuperar Cuenta</h3>
         </div>
