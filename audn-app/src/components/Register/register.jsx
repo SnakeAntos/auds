@@ -4,6 +4,7 @@ import { RegisterEmail } from "./registerEmail";
 import { RegisterUser } from "./registerUser";
 import { ButtonOrange } from "../Common/Button/buttonOrange";
 import { ButtonGrey } from "../Common/Button/buttonGrey";
+import { useNavigate } from "react-router-dom";
 
 export const Register = (props) => {
   const [showRegisterEmail, setShowRegisterEmail] = useState(true);
@@ -12,11 +13,16 @@ export const Register = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  const navigate = useNavigate()
+
   const apiUrl = "http://localhost:3001";
 
   const handleContinueClick = () => {
     setShowRegisterEmail(false);
-    if (email !== "" && username !== "" && password !== "") registerNewUser();
+    if (email !== "" && username !== "" && password !== "") {
+      registerNewUser();
+      navigate("/home")
+    }
   };
 
   const handleRegisterEmailFilled = (isFilled) => {
