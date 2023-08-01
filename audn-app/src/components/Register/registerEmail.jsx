@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { Input } from "../Common/Input/input";
 
-export const RegisterEmail = ({ onEmailFilled }) => {
-  const [email, setEmail] = useState("");
+export const RegisterEmail = ({ onEmailFilled, setEmail, email }) => {
+
 
   const handleInputChange = (event) => {
     const { value } = event.target;
@@ -20,6 +20,10 @@ export const RegisterEmail = ({ onEmailFilled }) => {
     onEmailFilled(isFilled);
   }, [email, onEmailFilled]);
 
+  useEffect(() => {
+    setEmail(email);
+  }, [email, setEmail]);
+
   return (
     <div id="register-email-container">
       <div id="register-email-title">
@@ -27,7 +31,7 @@ export const RegisterEmail = ({ onEmailFilled }) => {
       </div>
       <form action="">
         <label>Correo electrónico</label>
-        <Input type="email" onChange={handleInputChange} />
+        <Input type="email" onChange={handleInputChange} value={email}/>
       </form>
       <p>Deberás poder confirmarlo luego.</p>
     </div>
