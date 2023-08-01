@@ -21,7 +21,6 @@ export const RecupCont = (props) => {
           </label>
           <Input
             className="login-input-name"
-            placeholder="mara_pg"
             type="text"
           ></Input>
         </div>
