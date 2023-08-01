@@ -9,7 +9,9 @@ import { useNavigate } from "react-router";
 export const Profile = () => {
 
 
-//Cuando entra al profile, useeffect, que vaya a algun endpoint (getbyid) que tenga los datos y lo devuelva
+//Traer el id_user del token
+// useeffect
+// que vaya a algun endpoint (getbyid) que tenga los datos y lo devuelva
 
   return (
     <>
