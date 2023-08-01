@@ -7,15 +7,6 @@ import { useNavigate } from "react-router";
 
 export const Home1 = () => {
 
-  const {user} = useAuth()
-  const navigate = useNavigate()
-
-
-  useEffect(() => {
-    console.log(user);
-    (user == null) && navigate("/");
-  }, [])
-  
 
   return (
     <div className="musicaya-container">
