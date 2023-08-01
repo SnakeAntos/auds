@@ -14,6 +14,8 @@ export const Search = () => {
     const [searchResults, setSearchResults] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
 
+    const apiUrl = "http://localhost:3001";
+
     const handleInputFocus = () => {
       setInputFocused(true);
     };
@@ -28,7 +30,7 @@ export const Search = () => {
        // Función asincrónica para obtener las canciones
        const fetchSongs = async () => {
         try {
-          const response = await fetch("http://localhost:3001/songs/allsongs");
+          const response = await fetch(`${apiUrl}/songs/allsongs`);
           const data = await response.json();
           setAllSongs(data);
         } catch (error) {

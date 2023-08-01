@@ -15,7 +15,7 @@
 
 .login-left-arrow {
   position: absolute;
-  top: 22px;
+  top: 32px;
 }
 
 .musica-cont {
@@ -28,6 +28,8 @@
   font-size: 16px;
   letter-spacing: 0.5px;
   margin: 0;
+  margin-top: 30px;
+  color:#26262e;
 }
 
 .musica-cont-body {
