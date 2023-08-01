@@ -1,13 +1,14 @@
 import "./styles.css";
 import { Input } from "../Common/Input/input";
 import { ButtonGrey } from "../Common/Button/buttonGrey";
+import LeftArrow from "../../../public/images/left-arrow.png"
 
 export const RecupCont = (props) => {
   return (
     <div className="login-container">
       <div className="login-nav">
         <img
-          src="../../../public/images/left-arrow.png"
+          src={LeftArrow}
           className="login-left-arrow"
         ></img>
         <div className="login-header">

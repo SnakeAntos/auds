@@ -1,17 +1,19 @@
 import "./styles.css";
 import { ButtonOrange } from "../Common/Button/buttonOrange";
-import { ButtonBlack} from "../Common/Button/buttonBlack"
+import { ButtonBlack} from "../Common/Button/buttonBlack";
+import LandingBackgroundImage from "../../../public/images/gif-landing.gif"
+import LandingLogo from "../../../public/images/logo-landing.png"
 
 export const LandingPage = ({ onRegisterClick, onLogInClick }) => {
   return (
     <div id="landing-container">
-        <img src="../../../public/images/gif-landing.gif" className="landing-background-img" alt="" />
+        <img src={LandingBackgroundImage} className="landing-background-img" alt="" />
         <div className="background-overlay"></div>
       <header id="landing-header">
         <div id="landing-logo-container">
           <img
             className="landing-logo"
-            src="../../../public/images/logo-landing.png"
+            src={LandingLogo}
             alt=""
           />
         </div>
