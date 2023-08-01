@@ -1,14 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Home1 } from "./pages/Home1/home1";
 import { Profile } from "./pages/Profile/profile";
 import { Search } from "./pages/Search/search";
+
 import { MusicaContextual } from "./pages/MusicaCont1/musicaCont1";
 import { CupidoMusical } from "./pages/CupidoMusical/cupidomusical";
 import { AppProviders } from "./context";
+
 
 const router = createBrowserRouter([
   // contiene la landing page, registro e inicio de sesión
@@ -19,28 +20,33 @@ const router = createBrowserRouter([
 
   {
     path: "/home",
-    element: <Home1/>
+    element: <Home1 />,
   },
 
   {
     path: "/perfil",
-    element: <Profile/>,
-  }, 
+    element: <Profile />,
+  },
 
   {
     path: "/buscar",
-    element: <Search/>,
+    element: <Search />,
   },
   {
     path: "/musicaContextual",
-    element: <MusicaContextual/>,
-   },
+    element: <MusicaContextual />,
+  },
 
   {
    path: "/cupidoMusical",
    element: <CupidoMusical/>,
   }, 
 
+
+  //{
+  //  path: "/cupidoMusical",
+  //  element:
+  //},
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

@@ -5,10 +5,6 @@ export const MusicCurrentCupid = ({song, onNextSong, onLikeSong}) => {
   const handleNextSong = () => {
     onNextSong();
   }
-  const handleLike = () => {    
-    onLikeSong();
-  };
-
   const handleLikeAndNext = () =>{
     onLikeSong();
     onNextSong();

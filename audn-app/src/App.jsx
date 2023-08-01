@@ -1,4 +1,3 @@
-
 import "./App.css";
 import React, { useState } from "react";
 
@@ -23,7 +22,7 @@ export const App = () => {
   };
 
 
-  
+
   return (
     <>
       {!showRegister && !showLogIn && (
@@ -39,7 +38,6 @@ export const App = () => {
         />
       )}
       {showLogIn && <LogIn setShowLogIn={setShowLogIn} />}
-      
     </>
   );
 };
