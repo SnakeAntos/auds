@@ -4,17 +4,28 @@ import { RegisterEmail } from "./registerEmail";
 import { RegisterUser } from "./registerUser";
 import { ButtonOrange } from "../Common/Button/buttonOrange";
 import { ButtonGrey } from "../Common/Button/buttonGrey";
+import { useNavigate } from "react-router-dom";
 import ArrowBack from "../../../public/images/arrow-back.png"
 
 export const Register = (props) => {
   const [showRegisterEmail, setShowRegisterEmail] = useState(true);
   const [isButtonOrange, setIsButtonOrange] = useState(false);
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const navigate = useNavigate()
+
+  const apiUrl = "http://localhost:3001";
 
   const handleContinueClick = () => {
     setShowRegisterEmail(false);
+    if (email !== "" && username !== "" && password !== "") {
+      registerNewUser();
+      navigate("/home")
+    }
   };
 
-  // Funciones para recibir información sobre el estado de los campos de los componentes hijos
   const handleRegisterEmailFilled = (isFilled) => {
     setIsButtonOrange(isFilled);
   };
@@ -22,6 +33,30 @@ export const Register = (props) => {
   const handleGoBack = () => {
     props.setShowRegister(false);
   };
+
+  // conectar con endpoint register
+// que tome mail, usuario, contrasena y lo mande al back
+
+const registerNewUser = async () => {
+  try {
+    const response = await fetch(`${apiUrl}/users/new`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: username,
+        password: password,
+        nickname: props.nickname,
+        email: email, // Usar el correo electrónico capturado en el estado del componente
+      }),
+    });
+    const data = await response.json();
+    console.log(data); // Aquí puedes hacer algo con la respuesta del backend, por ejemplo, mostrar un mensaje de éxito
+  } catch (error) {
+    console.error(error);
+  }
+};
 
   return (
     <div id="register-container">
@@ -38,9 +73,17 @@ export const Register = (props) => {
         <h3 id="register-title">Crear cuenta</h3>
       </header>
       {showRegisterEmail ? (
-        <RegisterEmail onEmailFilled={handleRegisterEmailFilled} />
+        <RegisterEmail 
+          onEmailFilled={handleRegisterEmailFilled}
+          setEmail={setEmail} 
+          email={email}
+          />
       ) : (
-        <RegisterUser />
+        <RegisterUser 
+        setUsername={setUsername}
+        setPassword={setPassword}
+        username={username}
+        password={password}/>
       )}
       {isButtonOrange ? (
         <ButtonOrange text="Continuar" onClick={handleContinueClick} />
