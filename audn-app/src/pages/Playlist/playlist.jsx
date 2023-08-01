@@ -59,7 +59,7 @@ export const Playlist = (props) => {
         </div>
       </div>
       {isLoading ? (
-        <Loading /> 
+        <Loading />
       ) : (
         <RandomImgsPlaylist
           randomSongs={getRandomPlaylistSongs(playlistsSongs, 4)}
@@ -73,13 +73,17 @@ export const Playlist = (props) => {
         {playlistsSongs.map((song) => (
           <li key={song.id}>
             <div className="playlist-render_container">
-              <img className="playlist-ul-rendered_img" src={song.img} alt={song.song_name}></img>
+              <img
+                className="playlist-ul-rendered_img"
+                src={song.img}
+                alt={song.song_name}
+              ></img>
               <p className="playlist-ul-render_title">{song.song_name}</p>
             </div>
           </li>
         ))}
       </ul>
-      <div></div>
+      
     </div>
   );
 };
