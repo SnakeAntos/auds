@@ -6,6 +6,8 @@ import { ProfilePlaylistItem } from "./profilePlaylistItem";
 // import { useAuth } from "../../context/authContext";
 // import { useNavigate } from "react-router";
 // import { fetchUserDataByUsername } from "../../services/audn-API";
+import ConfigIcon from "../../../public/images/config.svg"
+
 
 export const Profile = () => {
 
@@ -40,7 +42,7 @@ export const Profile = () => {
     <>
       <div id="profile-container">
         <div id="profile-settings-icon">
-          <img src="../../../images/config.svg" alt="" />
+          <img src={ConfigIcon} alt="" />
         </div>
         <div id="profile-info-container">
           <img src="../../../images/profile-image.jpg" alt="" />
@@ -54,16 +56,6 @@ export const Profile = () => {
           </div>
           <div id="profile-playlist-list">
               <ProfilePlaylistItem
-                image='../../../images/playlist-cover.jpg'
-                name="Me fui de gira mabel"
-                owner='@mara_pg'
-              />
-                              <ProfilePlaylistItem
-                image='../../../images/playlist-cover.jpg'
-                name="Me fui de gira mabel"
-                owner='@mara_pg'
-              />
-                              <ProfilePlaylistItem
                 image='../../../images/playlist-cover.jpg'
                 name="Me fui de gira mabel"
                 owner='@mara_pg'

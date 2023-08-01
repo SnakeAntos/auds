@@ -5,6 +5,7 @@ import { RegisterUser } from "./registerUser";
 import { ButtonOrange } from "../Common/Button/buttonOrange";
 import { ButtonGrey } from "../Common/Button/buttonGrey";
 import { useNavigate } from "react-router-dom";
+import ArrowBack from "../../../public/images/arrow-back.png"
 
 export const Register = (props) => {
   const [showRegisterEmail, setShowRegisterEmail] = useState(true);
@@ -62,7 +63,7 @@ const registerNewUser = async () => {
       <header id="register-header">
         <div id="register-arrow-container">
           <img
-            src="../../../public/images/arrow-back.png"
+            src={ArrowBack}
             id="register-arrow-image"
             alt=""
             onClick={handleGoBack}

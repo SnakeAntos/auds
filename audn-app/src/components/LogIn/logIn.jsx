@@ -6,6 +6,7 @@ import { useState } from "react";
 import { ButtonOrange } from "../Common/Button/buttonOrange";
 import { useAuth } from "../../context/authContext";
 import { useNavigate } from "react-router-dom";
+import ArrowBack from "../../../public/images/arrow-back.png"
 
 export const LogIn = (props) => {
   const [showRecupCont, setShowRecupCont] = useState(false);
@@ -75,7 +76,7 @@ export const LogIn = (props) => {
         <>
           <div className="login-nav">
             <img
-              src="../../../public/images/arrow-back.png"
+              src={ArrowBack}
               className="login-left-arrow"
               alt="Flecha hacia atrás"
               onClick={handleGoBack}

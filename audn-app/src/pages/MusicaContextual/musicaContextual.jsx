@@ -4,6 +4,7 @@ import { ButtonMusicaContextual } from "../../components/Common/Button/buttonMus
 import { ButtonGrey } from "../../components/Common/Button/buttonGrey";
 import { ButtonsMusicaYa } from "../../components/Common/Button/buttonsMusicaYa";
 import { useState, useEffect } from "react";
+import LeftArrow from "../../../public/images/left-arrow.png"
 
 const fetchSongsByGenre = async (genre) => {
   try {
@@ -59,7 +60,7 @@ export const MusicaContextual = (props) => {
     "Viajando",
   ];
   const menuOptions1 = ["Muy Contento", "Triste", "Con todo el Power", "Feliz"];
-  const menuOptions2 = ["Frio", "Soleado", "de playa", "Caluroso", "Ventoso"];
+  const menuOptions2 = ["Frio", "Soleado", "De playa", "Caluroso", "Ventoso"];
   const buttonTexts = [
     "Rock",
     "Country",
@@ -72,7 +73,7 @@ export const MusicaContextual = (props) => {
     "Folk",
     "R&B",
     "Clasico",
-    "Alterntivo",
+    "Alternativo",
     "Ambiente",
     "EDM",
     "Electronica",
@@ -133,7 +134,7 @@ export const MusicaContextual = (props) => {
       <div className="musica-cont-header">
         <div className="musica-cont">
           <img
-            src="../../../public/images/left-arrow.png"
+            src={LeftArrow}
             className="login-left-arrow"
           ></img>
           <h3 className="musica-cont-title">Musica Contextual</h3>
@@ -154,6 +155,7 @@ export const MusicaContextual = (props) => {
             text="Estado de Animo"
             textColor="grey"
             options={menuOptions1}
+            areAllOptionsSelected={areAllOptionsSelected}
           />
         </div>
         <div>
@@ -162,26 +164,31 @@ export const MusicaContextual = (props) => {
             text="Clima"
             textColor="grey"
             options={menuOptions2}
+            areAllOptionsSelected={areAllOptionsSelected}
           />
         </div>
       </div>
       <div className="box">
         <h3 className="musicacont-title1">Selecciona hasta 3 generos:</h3>
         <div className="musica-contextual-container">
-          <ul>
-            {songs.map((song) => (
-              <li key={song.id_song}>{song.song_name}</li>
-            ))}
-          </ul>
-          <div className="musica-contextual-box">
-            {buttonTexts.map((text, index) => (
-              <div key={index} className="musica-cont-buttons-fit">
-                <ButtonsMusicaYa
-                  text={text}
-                  setSelectedGenre={setSelectedGenre}
-                />
-              </div>
-            ))}
+          <div className="genre-song-list">
+            <ul>
+              {songs.map((song) => (
+                <li key={song.id_song}>{song.song_name}</li>
+              ))}
+            </ul>
+            <div className="musica-contextual-box">
+              {buttonTexts.map((text, index) => (
+                <div key={index} className="musica-cont-buttons-fit">
+                  <ButtonsMusicaYa
+                    text={text}
+                    setSelectedGenre={setSelectedGenre}
+                    areAllOptionsSelected={areAllOptionsSelected}
+                  />
+                </div>
+              ))}
+              <div></div>
+            </div>
           </div>
         </div>
       </div>
@@ -189,6 +196,7 @@ export const MusicaContextual = (props) => {
         <ButtonGrey
           text="Crear Playlist"
           style={{ backgroundColor: isButtonOrange ? "orange" : "grey" }}
+          onChange={areAllOptionsSelected}
         />
       </div>
     </div>

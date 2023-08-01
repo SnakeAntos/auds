@@ -9,7 +9,7 @@ import { Search } from "./pages/Search/search";
 import { MusicaContextual } from "./pages/MusicaContextual/musicaContextual";
 import { CupidoMusical } from "./pages/CupidoMusical/cupidomusical";
 import { AppProviders } from "./context";
-
+import { Playlist } from "./pages/Playlist/playlist";
 
 const router = createBrowserRouter([
   // contiene la landing page, registro e inicio de sesión
@@ -38,10 +38,14 @@ const router = createBrowserRouter([
   },
 
   {
-   path: "/cupidoMusical",
-   element: <CupidoMusical/>,
-  }, 
+    path: "/cupidoMusical",
+    element: <CupidoMusical />,
+  },
 
+  {
+    path: "/playlist",
+    element: <Playlist />,
+  },
 
   //{
   //  path: "/cupidoMusical",

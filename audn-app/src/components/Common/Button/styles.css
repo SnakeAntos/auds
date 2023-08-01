@@ -9,6 +9,8 @@
   outline: none;
   margin-top: 7px;
   margin-bottom: 7px;
+  cursor: pointer;
+  color: #26262e;
 }
 
 .button-orange {
