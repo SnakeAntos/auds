@@ -13,6 +13,7 @@ export const Register = (props) => {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(false)
 
   const navigate = useNavigate()
 
@@ -22,7 +23,6 @@ export const Register = (props) => {
     setShowRegisterEmail(false);
     if (email !== "" && username !== "" && password !== "") {
       registerNewUser();
-      navigate("/home")
     }
   };
 
@@ -52,6 +52,9 @@ const registerNewUser = async () => {
       }),
     });
     const data = await response.json();
+    if (data.accessToken) {
+      navigate("/home")
+    } else {setError(true)}
     console.log(data); // Aquí puedes hacer algo con la respuesta del backend, por ejemplo, mostrar un mensaje de éxito
   } catch (error) {
     console.error(error);
@@ -84,6 +87,11 @@ const registerNewUser = async () => {
         setPassword={setPassword}
         username={username}
         password={password}/>
+      )}
+      {error && (
+      <div id="register-error">
+        <h6>Error al registrar el usuario. Verifique que no exista una cuenta con ese correo electrónico y/o nombre de usuario.</h6>
+      </div>
       )}
       {isButtonOrange ? (
         <ButtonOrange text="Continuar" onClick={handleContinueClick} />
