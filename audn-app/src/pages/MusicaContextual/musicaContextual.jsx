@@ -4,6 +4,7 @@ import { ButtonMusicaContextual } from "../../components/Common/Button/buttonMus
 import { ButtonGrey } from "../../components/Common/Button/buttonGrey";
 import { ButtonsMusicaYa } from "../../components/Common/Button/buttonsMusicaYa";
 import { useState, useEffect } from "react";
+import LeftArrow from "../../../public/images/left-arrow.png"
 
 const fetchSongsByGenre = async (genre) => {
   try {
@@ -59,7 +60,7 @@ export const MusicaContextual = (props) => {
     "Viajando",
   ];
   const menuOptions1 = ["Muy Contento", "Triste", "Con todo el Power", "Feliz"];
-  const menuOptions2 = ["Frio", "Soleado", "de playa", "Caluroso", "Ventoso"];
+  const menuOptions2 = ["Frio", "Soleado", "De playa", "Caluroso", "Ventoso"];
   const buttonTexts = [
     "Rock",
     "Country",
@@ -133,7 +134,7 @@ export const MusicaContextual = (props) => {
       <div className="musica-cont-header">
         <div className="musica-cont">
           <img
-            src="../../../public/images/left-arrow.png"
+            src={LeftArrow}
             className="login-left-arrow"
           ></img>
           <h3 className="musica-cont-title">Musica Contextual</h3>
