@@ -45,18 +45,12 @@ export const LogIn = (props) => {
     setShowRecupCont(true);
   };
 
+
   const handleLogin = () => {
     login(username, password)
-    .then(data => {
-      if (data.accessToken) {
-        navigate("/home");
-      } else {
-        console.log("Error: No se recibió el token de acceso.");
-      }
-    })
-    .catch(error => {
-      console.error("Error al iniciar sesión:", error);
-    });
+    .then(() => { 
+      console.log("handleLogIn")
+      navigate("/home")})
   };
 
   const handleUsernameChange = (event) => {

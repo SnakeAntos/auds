@@ -10,16 +10,17 @@ const useAuth = () => {
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
-    const login = (email, password) => {
-        checkCredentials(email, password).then(data =>{
-        if(data.token){
+    const login =  async (email, password) => {
+        const data = await checkCredentials(email, password)
+        if(data.accessToken){
+            console.log("Imprimiendo en consola")
             setUser(data)
-            localStorage.setItem('token', JSON.stringify(data))
+            localStorage.setItem('accessToken', JSON.stringify(data));
         }
-        });
-    }
+    };
+
     const logout = () => {
-        localStorage.removeItem('token')
+        localStorage.removeItem('accessToken')
         setUser(null);
       }
     return <authContext.Provider value={{ user, login, logout }}>{children}</authContext.Provider>;

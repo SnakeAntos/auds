@@ -1,8 +1,22 @@
 import { ButtonMusicaYa } from "../../components/Common/Button/buttonMusicaYa";
 import "./styles.css";
 import { NavBar } from "../../components/NavBar/NavBar";
+import { useAuth } from "../../context/authContext";
+import { useEffect } from "react";
+import { useNavigate } from "react-router";
 
 export const Home1 = () => {
+
+  const {user} = useAuth()
+  const navigate = useNavigate()
+
+
+  useEffect(() => {
+    console.log(user);
+    (user == null) && navigate("/");
+  }, [])
+  
+
   return (
     <div className="musicaya-container">
       <div className="musicaya-nav">

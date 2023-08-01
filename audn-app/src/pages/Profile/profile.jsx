@@ -1,9 +1,16 @@
 import "./styles.css";
+import { useEffect, useState } from "react";
 import { NavBar } from "../../components/NavBar/NavBar";
 import {ButtonOrange} from "../../components/Common/Button/buttonOrange"
 import { ProfilePlaylistItem } from "./profilePlaylistItem";
+import { useAuth } from "../../context/authContext";
+import { useNavigate } from "react-router";
 
 export const Profile = () => {
+
+
+//Cuando entra al profile, useeffect, que vaya a algun endpoint (getbyid) que tenga los datos y lo devuelva
+
   return (
     <>
       <div id="profile-container">
@@ -12,7 +19,7 @@ export const Profile = () => {
         </div>
         <div id="profile-info-container">
           <img src="../../../images/profile-image.jpg" alt="" />
-          <h1>Mara Pérez 🦋</h1>
+          <h1>Mara</h1>
           <h4>@mara_pg</h4>
         </div>
         <div id="profile-playlists">
