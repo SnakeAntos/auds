@@ -4,6 +4,10 @@ import React, { useState } from "react";
 import { LandingPage } from "./components/LandingPage/landingPage";
 import { LogIn } from "./components/LogIn/logIn";
 import { Register } from "./components/Register/register";
+import { Playlist } from "./pages/Playlist/playlist";
+import { PlaylistBar } from "./pages/Playlist/playlistBar";
+import { Playlistbar2 } from "./pages/Playlist/playlistbar2";
+import { NavBar } from "./components/NavBar/NavBar";
 
 export const App = () => {
   const [showRegister, setShowRegister] = useState(false);
@@ -20,7 +24,6 @@ export const App = () => {
     setShowLogIn(true);
     setShowRegister(false);
   };
-
 
 
   return (

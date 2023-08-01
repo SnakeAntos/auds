@@ -5,6 +5,10 @@ import { useAuth } from "../../context/authContext";
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
+import Icon1 from "../../../public/images/history.svg"
+import Icon2 from "../../../public/images/bell.png"
+import Image1 from "../../../public/images/musicaYa1.png"
+import Image2 from "../../../public/images/musicaYa2.png"
 
 export const Home1 = () => {
 
@@ -18,11 +22,11 @@ export const Home1 = () => {
         <div className="musicaya-icons">
           <img
             className="icono1-musicaya"
-            src="../../../public/images/history.svg"
+            src={Icon1}
           ></img>
           <img
             className="icono2-musicaya"
-            src="../../../public/images/bell.png"
+            src={Icon2}
           ></img>
         </div>
       </div>
@@ -32,7 +36,7 @@ export const Home1 = () => {
             <div className="button-musicaYa1">
               <img
                 className="photo-my1"
-                src="../../../public/images/musicaYa1.png"
+                src={Image1}
               ></img>
             </div>
             <div className="cupido-text">
@@ -51,7 +55,7 @@ export const Home1 = () => {
             <div className="button-musicaYa1">
               <img
                 className="photo-my1"
-                src="../../../public/images/musicaYa2.png"
+                src={Image2}
               ></img>
             </div>
             <div className="cupido-text">
