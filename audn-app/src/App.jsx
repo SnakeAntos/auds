@@ -28,7 +28,7 @@ export const App = () => {
 
   return (
     <>
-      {/* {!showRegister && !showLogIn && (
+      {!showRegister && !showLogIn && (
         <LandingPage
           onRegisterClick={handleRegisterClick}
           onLogInClick={handleLogInClick}
@@ -40,7 +40,7 @@ export const App = () => {
           setShowRegister={setShowRegister}
         />
       )}
-      {showLogIn && <LogIn setShowLogIn={setShowLogIn} />} */}
+      {showLogIn && <LogIn setShowLogIn={setShowLogIn} />}
     </>
   );
 };
