@@ -193,3 +193,45 @@
   width: 320px;
   width: 48px;
 }
+
+.playlist-ul_song_render {
+  list-style-type: none;
+}
+.playlist-ul-rendered_img {
+  width: 70px;
+  height: 70px;
+  border-radius: 20px;
+}
+.playlist-render_container {
+  display: flex;
+  justify-content: first baseline;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.playlist-ul-render_title {
+  font-family: "Rubik", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  margin-left: 25px;
+}
+.random-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.random-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 4px;
+  grid-row-gap: 4px;
+}
+
+.random-img {
+  width: 70px;
+  height: 70px;
+  margin: 3px;
+}

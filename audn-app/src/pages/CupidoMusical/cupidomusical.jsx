@@ -1,7 +1,6 @@
 
 import React from "react";
 
-
 import { ButtonOrange } from "../../components/Common/Button/buttonOrange";
 import "./styles.css";
 import { ComponentTitle } from "../../components/Common/ComponentTitle";
@@ -9,11 +8,14 @@ import { MusicCurrentCupid } from "../../pages/CupidoMusical/MusicCurrentCupid";
 import { CurrentMatches } from "../../pages/CupidoMusical/CurrentMatches";
 import { useState, useEffect } from "react";
 import Loading from "../../components/Common/Loading";
+import Playlist from "../Playlist/playlist.jsx"
 
 export const CupidoMusical = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [songRandom, setSongRandom] = useState([]);
   const [likedSongs, setLikedSongs] = useState([]);
+  const [showPlaylist, setShowPlaylist] = useState(false);
+  const [playlistId, setPlaylistId] = useState(0);
 
   useEffect(() => {
     setIsLoading(true);
@@ -75,9 +77,11 @@ export const CupidoMusical = () => {
       })
       .then((data) => {  
         console.log("el id es",data.id_playlist);      
-        const playlistId = Number(data.id_playlist); //no puedo con esto// si pongo data.id queda undefined
+        const actualPlaylistId = Number(data.id_playlist); //no puedo con esto// si pongo data.id queda undefined
+        setPlaylistId(actualPlaylistId);
         setIsLoading(false);
-        handleAddSongsToPlaylist(playlistId, songsIdList);
+        handleAddSongsToPlaylist(actualPlaylistId, songsIdList);
+        setShowPlaylist(true);
         
       })
       .catch((error) => {
@@ -119,47 +123,44 @@ export const CupidoMusical = () => {
   };
   return (
     <>
+    {showPlaylist ? ( 
+      <Playlist playlistId={playlistId} title="Tu lista de cupido" subTitle="lista generada a partir de cupido musical" />) 
+      : (      
       <div className="cupidoMusical-container">
         {isLoading ? (
           <>
-            <Loading />
-            <ComponentTitle title="Cupido Musical"></ComponentTitle>
+            <Loading/>
+            <ComponentTitle title="Cupido Musical" />
             <MusicCurrentCupid
               onLikeSong={handleLikedSong}
               onNextSong={handleNextSong}
               song={songRandom}
-            ></MusicCurrentCupid>
-            <CurrentMatches
-              likedSongs={likedSongs}
-              title="Matches actuales"
-            ></CurrentMatches>
+            />
+            <CurrentMatches likedSongs={likedSongs} title="Matches actuales" />
             <ButtonOrange
               onClick={handleCupidPlaylist}
               text="Crear Playlist"
-            ></ButtonOrange>
+            />
           </>
         ) : (
           <>
-            <ComponentTitle title="Cupido Musical"></ComponentTitle>
+            <ComponentTitle title="Cupido Musical" />
             <MusicCurrentCupid
               onLikeSong={handleLikedSong}
               onNextSong={handleNextSong}
               song={songRandom}
-            ></MusicCurrentCupid>
-            <CurrentMatches
-              likedSongs={likedSongs}
-              title="Matches actuales"
-            ></CurrentMatches>
+            />
+            <CurrentMatches likedSongs={likedSongs} title="Matches actuales" />
             <ButtonOrange
               onClick={handleCupidPlaylist}
               text="Crear Playlist"
-            ></ButtonOrange>
+            />
           </>
         )}
       </div>
-    </>
-  );
+    )}
+  </>
+);
 };
-
 export default CupidoMusical;
 
