@@ -1,10 +1,12 @@
 import "./styles.css";
+import { Link } from 'react-router-dom';
+
 
  export const ComponentTitle = (props) => {
     return (
       <>
         <div className="componentTitle-container">
-            <div className="componentTitle-backArrow"></div>
+            <Link to="/home"><div className="componentTitle-backArrow"></div></Link>
             <p className="componentTitle-title">{props.title}</p>
         </div>
       </>
