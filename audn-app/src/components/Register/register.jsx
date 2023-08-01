@@ -22,6 +22,9 @@ export const Register = (props) => {
     props.setShowRegister(false);
   };
 
+  // conectar con endpoint register
+// que tome mail, usuario, contrasena y lo mande al back
+
   return (
     <div id="register-container">
       <header id="register-header">

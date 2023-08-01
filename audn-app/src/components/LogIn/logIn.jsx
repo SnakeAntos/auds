@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 export const LogIn = (props) => {
   const [showRecupCont, setShowRecupCont] = useState(false);
-  const {login, user} = useAuth()
+  const {login, error} = useAuth()
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -47,11 +47,15 @@ export const LogIn = (props) => {
 
 
   const handleLogin = () => {
-    login(username, password)
-    .then(() => { 
-      console.log("handleLogIn")
-      navigate("/home")})
-  };
+    const resultado = login(username, password)
+     console.log(resultado)
+    resultado.then((data) => { 
+      console.log(data)})
+    .catch(error => {
+      console.log(error)
+    })
+    //error == null ? navigate("/home") : console.log(error)})
+    };
 
   const handleUsernameChange = (event) => {
     const newUsername = event.target.value;
