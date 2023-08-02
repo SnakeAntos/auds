@@ -2,7 +2,12 @@ import React from "react";
 import "./styles.css";
 import { useState, useEffect } from "react";
 
-export const ButtonMusicaContextual = ({ text, textColor, options }) => {
+export const ButtonMusicaContextual = ({
+  text,
+  textColor,
+  options,
+  onMenuToggle,
+}) => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
   const [topSongs, setTopSongs] = useState([]);
@@ -12,6 +17,8 @@ export const ButtonMusicaContextual = ({ text, textColor, options }) => {
 
   const handleButtonClick = () => {
     setShowDropdown(!showDropdown);
+    setSelectedGenre(text);
+    onMenuToggle();
   };
 
   const handleOptionSelect = (option) => {
@@ -35,7 +42,7 @@ export const ButtonMusicaContextual = ({ text, textColor, options }) => {
       </ul>
 
       <button
-        className="button button-transparente"
+        className={`button button-transparente `}
         style={{ color: textColor }}
         onClick={handleButtonClick}
       >
@@ -44,7 +51,9 @@ export const ButtonMusicaContextual = ({ text, textColor, options }) => {
 
       {showDropdown && (
         <ul
-          className="dropdown-menu"
+          className={`button dropdown-menu${
+            selectedGenre === text ? "button-selected" : ""
+          }`}
           onClick={() => handleOptionSelect(option)}
         >
           {options.map((option) => (
