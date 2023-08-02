@@ -15,7 +15,7 @@ const BASE_URL = import.meta.env.VITE_AUDN_API;
     return fetch(url, options)
   };
   
-  export const fetchUserDataByUsername = async (username) => {
+  export const fetchUserDataByUsername = async (username, token) => {
     const endpoint = `/users/${username}`;
     const url = `${BASE_URL}${endpoint}`;
     try {
@@ -23,7 +23,7 @@ const BASE_URL = import.meta.env.VITE_AUDN_API;
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          // Aquí puedes agregar los headers necesarios para autenticación, como el accessToken si es necesario.
+          "audn-access-token": token,
         },
       });
       if (!response.ok) {

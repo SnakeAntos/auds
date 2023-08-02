@@ -46,17 +46,28 @@ export const LogIn = (props) => {
     setShowRecupCont(true);
   };
 
+//Esta no funciona pero esta un poco mas cerca de la solución
+  // const handleLogin = async () => {
+  //   const resultado = await login(username, password)
+  //   console.log(resultado)
+  //   resultado.then((data) => { 
+  //     console.log(data)})
+  //   .catch(error => {
+  //     console.log(error)
+  //   })
+  //   error == null ? navigate("/home") : console.log(error)
+  //   };
 
-  const handleLogin = () => {
-    const resultado = login(username, password)
-     console.log(resultado)
-    resultado.then((data) => { 
-      console.log(data)})
-    .catch(error => {
-      console.log(error)
-    })
-    //error == null ? navigate("/home") : console.log(error)})
-    };
+//esta deja entrar pero no trae info
+  const handleLogin = async () => {
+    try {
+      const resultado = await login(username, password);
+      console.log(resultado);
+      navigate("/home");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const handleUsernameChange = (event) => {
     const newUsername = event.target.value;
