@@ -10,6 +10,7 @@ import Image1 from "../../../public/images/musicaYa1.png";
 import Image2 from "../../../public/images/musicaYa2.png";
 import { Link } from "react-router-dom";
 
+
 export const Home1 = () => {
   return (
     <div className="musicaya-container">

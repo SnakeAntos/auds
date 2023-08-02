@@ -16,10 +16,11 @@ export const CupidoMusical = () => {
   const [likedSongs, setLikedSongs] = useState([]);
   const [showPlaylist, setShowPlaylist] = useState(false);
   const [playlistId, setPlaylistId] = useState(0);
+  const baseUrl = import.meta.env.VITE_AUDN_API;
 
   useEffect(() => {
     setIsLoading(true);
-    fetch("http://localhost:3001/songs/random/obtain")
+    fetch(`${baseUrl}/songs/random/obtain`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("error al acceder al endpoint");
@@ -36,7 +37,7 @@ export const CupidoMusical = () => {
 
   const handleNextSong = () => {
     setIsLoading(true);
-    fetch("http://localhost:3001/songs/random/obtain")
+    fetch(`${baseUrl}/songs/random/obtain`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("error al acceder al endpoint");
@@ -57,7 +58,7 @@ export const CupidoMusical = () => {
     const playlistName = "Cupid playlist";
     const userId = 1; //esto se obtendria mediante el token...
 
-    fetch("http://localhost:3001/playlists/new", {
+    fetch(`${baseUrl}/playlists/new`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -93,7 +94,7 @@ export const CupidoMusical = () => {
   // Función para agregar las canciones a la playlist una vez creada
   const handleAddSongsToPlaylist = (playlistId, songsIdList) => {
     songsIdList.forEach((songId) => {      
-      fetch("http://localhost:3001/songslists/new", {
+      fetch(`${baseUrl}/songslists/new`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

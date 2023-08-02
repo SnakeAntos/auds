@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import LeftArrow from "../../../public/images/left-arrow.png"
 import { Link } from "react-router-dom";
 
+
 const fetchSongsByGenre = async (genre) => {
   try {
     const response = await fetch(`http://localhost:3001/songs/allsongs`);
@@ -22,6 +23,7 @@ export const MusicaContextual = (props) => {
   const [songs, setSongs] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedGenre, setSelectedGenre] = useState(null);
+  const baseUrl = import.meta.env.VITE_AUDN_API;
   const [selectedOptions, setSelectedOptions] = useState({
     ocasion: null,
     estadoAnimo: null,
@@ -85,7 +87,7 @@ export const MusicaContextual = (props) => {
 
   const fetchSongsByGenre = async (genre) => {
     try {
-      const response = await fetch(`http://localhost:3001/songs/allsongs`);
+      const response = await fetch(`${baseUrl}/songs/allsongs`);
       const data = await response.json();
 
       return data;

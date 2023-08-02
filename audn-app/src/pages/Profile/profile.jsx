@@ -9,6 +9,7 @@ import { fetchUserDataByUsername } from "../../services/audn-API";
 import ConfigIcon from "../../../public/images/config.svg"
 
 
+
 export const Profile = () => {
 
   const [userData, setUserData] = useState();
