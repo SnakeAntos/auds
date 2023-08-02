@@ -8,6 +8,7 @@ import Icon1 from "../../../public/images/history.svg";
 import Icon2 from "../../../public/images/bell.png";
 import Image1 from "../../../public/images/musicaYa1.png";
 import Image2 from "../../../public/images/musicaYa2.png";
+import { Link } from "react-router-dom";
 
 export const Home1 = () => {
   return (
@@ -22,30 +23,34 @@ export const Home1 = () => {
         </div>
       </div>
       <div className="musicaya-main">
-        <div className="musicaya-btn1">
-          <div className="button-musicaYa1">
-            <img className="photo-my1" src={Image1}></img>
+        <Link to='/cupidoMusical'>
+          <div className="musicaya-btn1">
+            <div className="button-musicaYa1">
+              <img className="photo-my1" src={Image1}></img>
+            </div>
+            <div className="cupido-text">
+              <h3 className="title-cupido">Cupido Musical</h3>
+              <p className="text-cupido">
+                Tus artistas favoritos nunca van a dejarte con el corazon roto.
+              </p>
+            </div>          
+              <ButtonMusicaYa className="button-transparent"></ButtonMusicaYa>          
           </div>
-          <div className="cupido-text">
-            <h3 className="title-cupido">Cupido Musical</h3>
-            <p className="text-cupido">
-              Tus artistas favoritos nunca van a dejarte con el corazon roto.
-            </p>
-          </div>          
-            <ButtonMusicaYa className="button-transparent"></ButtonMusicaYa>          
-        </div>
-        <div className="musicaya-btn1">
-          <div className="button-musicaYa1">
-            <img className="photo-my1" src={Image2}></img>
-          </div>
-          <div className="cupido-text">
-            <h3 className="title-cupido">Musica Contextual</h3>
-            <p className="text-cupido">
-              Creamos la playlist perfecta para cualquier situacion.
-            </p>
-          </div>          
-            <ButtonMusicaYa className="button-transparent"></ButtonMusicaYa>
-          </div>
+        </Link>
+        <Link to='/musicaContextual'>
+          <div className="musicaya-btn1">
+            <div className="button-musicaYa1">
+              <img className="photo-my1" src={Image2}></img>
+            </div>
+            <div className="cupido-text">
+              <h3 className="title-cupido">Musica Contextual</h3>
+              <p className="text-cupido">
+                Creamos la playlist perfecta para cualquier situacion.
+              </p>
+            </div>          
+              <ButtonMusicaYa className="button-transparent"></ButtonMusicaYa>
+            </div>
+          </Link>
       </div>
 
       <NavBar className="home-navbar" />

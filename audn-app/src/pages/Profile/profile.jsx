@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 import { NavBar } from "../../components/NavBar/NavBar";
 import {ButtonOrange} from "../../components/Common/Button/buttonOrange"
 import { ProfilePlaylistItem } from "./profilePlaylistItem";
-// import { useAuth } from "../../context/authContext";
-// import { useNavigate } from "react-router";
-// import { fetchUserDataByUsername } from "../../services/audn-API";
+import { useAuth } from "../../context/authContext";
+import { useNavigate } from "react-router";
+import { fetchUserDataByUsername } from "../../services/audn-API";
 import ConfigIcon from "../../../public/images/config.svg"
 
 
@@ -15,10 +15,10 @@ export const Profile = () => {
   const { user } = useAuth();
 
   useEffect(() => {
-    // Función para obtener el user_name desde el accessToken
+  //Obtener el user_name desde el accessToken
     const getUsernameFromAccessToken = () => {
-      if (user && user.username) {
-        return user.username; // Obtener el user_name directamente desde el contexto useAuth
+      if (user && user.user_name) {
+        return user.user_name; // Obtener el user_name directamente desde useAuth
       }
       return null;
     };
@@ -46,8 +46,8 @@ export const Profile = () => {
         </div>
         <div id="profile-info-container">
           <img src="../../../images/profile-image.jpg" alt="" />
-          <h1>Mara</h1>
-          <h4>@mara_pg</h4>
+          <h1>{userData.nickname}</h1>
+          <h4>{userData.user_name}</h4>
         </div>
         <div id="profile-playlists">
           <div id="profile-playlists-title">

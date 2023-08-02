@@ -5,6 +5,7 @@ import { ButtonGrey } from "../../components/Common/Button/buttonGrey";
 import { ButtonsMusicaYa } from "../../components/Common/Button/buttonsMusicaYa";
 import { useState, useEffect } from "react";
 import LeftArrow from "../../../public/images/left-arrow.png"
+import { Link } from "react-router-dom";
 
 const fetchSongsByGenre = async (genre) => {
   try {
@@ -133,10 +134,12 @@ export const MusicaContextual = (props) => {
     <div className="musica-cont-nav">
       <div className="musica-cont-header">
         <div className="musica-cont">
+        <Link to="/home">
           <img
             src={LeftArrow}
             className="login-left-arrow"
-          ></img>
+          />
+        </Link>
           <h3 className="musica-cont-title">Musica Contextual</h3>
         </div>
       </div>
