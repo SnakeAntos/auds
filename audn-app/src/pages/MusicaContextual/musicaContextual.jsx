@@ -4,6 +4,9 @@ import { ButtonMusicaContextual } from "../../components/Common/Button/buttonMus
 import { ButtonGrey } from "../../components/Common/Button/buttonGrey";
 import { ButtonsMusicaYa } from "../../components/Common/Button/buttonsMusicaYa";
 import { useState, useEffect } from "react";
+import LeftArrow from "../../../public/images/left-arrow.png"
+import { Link } from "react-router-dom";
+
 
 const fetchSongsByGenre = async (genre) => {
   try {
@@ -20,6 +23,7 @@ export const MusicaContextual = (props) => {
   const [songs, setSongs] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedGenre, setSelectedGenre] = useState(null);
+  const baseUrl = import.meta.env.VITE_AUDN_API;
   const [selectedOptions, setSelectedOptions] = useState({
     ocasion: null,
     estadoAnimo: null,
@@ -70,7 +74,7 @@ export const MusicaContextual = (props) => {
     "Viajando",
   ];
   const menuOptions1 = ["Muy Contento", "Triste", "Con todo el Power", "Feliz"];
-  const menuOptions2 = ["Frio", "Soleado", "de playa", "Caluroso", "Ventoso"];
+  const menuOptions2 = ["Frio", "Soleado", "De playa", "Caluroso", "Ventoso"];
   const buttonTexts = [
     "Rock",
     "Country",
@@ -83,7 +87,7 @@ export const MusicaContextual = (props) => {
     "Folk",
     "R&B",
     "Clasico",
-    "Alterntivo",
+    "Alternativo",
     "Ambiente",
     "EDM",
     "Electronica",
@@ -94,7 +98,7 @@ export const MusicaContextual = (props) => {
 
   const fetchSongsByGenre = async (genre) => {
     try {
-      const response = await fetch(`http://localhost:3001/songs/allsongs`);
+      const response = await fetch(`${baseUrl}/songs/allsongs`);
       const data = await response.json();
 
       return data;
@@ -163,10 +167,12 @@ export const MusicaContextual = (props) => {
     <div className="musica-cont-nav">
       <div className="musica-cont-header">
         <div className="musica-cont">
+        <Link to="/home">
           <img
-            src="../../../public/images/left-arrow.png"
+            src={LeftArrow}
             className="login-left-arrow"
-          ></img>
+          />
+        </Link>
           <h3 className="musica-cont-title">Musica Contextual</h3>
         </div>
       </div>
@@ -187,8 +193,12 @@ export const MusicaContextual = (props) => {
             text="Estado de Animo"
             textColor="grey"
             options={menuOptions1}
+
             isOpen={isMenuOpen}
             onMenuToggle={handleMenuToggle}
+
+            areAllOptionsSelected={areAllOptionsSelected}
+
           />
         </div>
         <div>
@@ -197,14 +207,19 @@ export const MusicaContextual = (props) => {
             text="Clima"
             textColor="grey"
             options={menuOptions2}
+
             isOpen={isMenuOpen}
             onMenuToggle={handleMenuToggle}
+
+            areAllOptionsSelected={areAllOptionsSelected}
+
           />
         </div>
       </div>
       <div className="box">
         <h3 className="musicacont-title1">Selecciona hasta 3 generos:</h3>
         <div className="musica-contextual-container">
+
           <ul>
             {songs.map((song) => (
               <li key={song.id_song}>{song.song_name}</li>
@@ -226,6 +241,26 @@ export const MusicaContextual = (props) => {
                 />
               </div>
             ))}
+
+          <div className="genre-song-list">
+            <ul>
+              {songs.map((song) => (
+                <li key={song.id_song}>{song.song_name}</li>
+              ))}
+            </ul>
+            <div className="musica-contextual-box">
+              {buttonTexts.map((text, index) => (
+                <div key={index} className="musica-cont-buttons-fit">
+                  <ButtonsMusicaYa
+                    text={text}
+                    setSelectedGenre={setSelectedGenre}
+                    areAllOptionsSelected={areAllOptionsSelected}
+                  />
+                </div>
+              ))}
+              <div></div>
+            </div>
+
           </div>
         </div>
       </div>
@@ -234,6 +269,7 @@ export const MusicaContextual = (props) => {
           className="create-playlist"
           text="Crear Playlist"
           style={{ backgroundColor: isButtonOrange ? "orange" : "grey" }}
+          onChange={areAllOptionsSelected}
         />
       </div>
     </div>

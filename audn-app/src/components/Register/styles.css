@@ -108,11 +108,13 @@ justify-content: center;
     color: #FF8E0A;
 }
 
-
-.registerError{
-    color: #EA0F0F;
+#register-error{
+    margin: 0px 30px;
 }
 
-.registerSuccess{
-    color: #03A400;
+#register-error h6{
+    color: #EA0F0F;
+    font-family: 'Rubik', sans-serif;
+    font-size: 12px;
+    margin: 10px 0;
 }

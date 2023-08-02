@@ -3,26 +3,41 @@ import { NavBar } from "../../components/NavBar/NavBar";
 
 import { PlaylistBar } from "./playlistBar";
 import { Playlistbar2 } from "./playlistbar2";
+import Loading from "../../components/Common/Loading";
+import RandomImgsPlaylist from "./randomImgsPlaylist";
 import "./styles.css";
 import { useEffect, useState } from "react";
 import { Song } from "./song";
 
 export const Playlist = (props) => {
-  const [allSongs, setAllSongs] = useState([]);
+  const [playlistsSongs, setPlaylistsSongs] = useState([]);
+  const playlistId = props.playlistId;
+  const [isLoading, setIsLoading] = useState(false);
+  const baseUrl = import.meta.env.VITE_AUDN_API;
 
-  const fetchSongs = async () => {
+  const fetchPlaylistSongs = async (playlistId) => {
+    setIsLoading(true);
     try {
-      const response = await fetch("http://localhost:3001/songs/allsongs");
+      const response = await fetch(
+        `${baseUrl}/playlists/getsongs/${playlistId}`
+      );
       const data = await response.json();
-      setAllSongs(data);
+      setPlaylistsSongs(data);
     } catch (error) {
-      console.error("Error al obtener las canciones:", error);
+      console.error("Error al obtener las canciones de la playlist:", error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   useEffect(() => {
-    fetchSongs();
-  }, [allSongs]);
+    fetchPlaylistSongs(playlistId);
+  }, [playlistId]);
+
+  const getRandomPlaylistSongs = (songsList, count) => {
+    const shuffledSongs = songsList.sort(() => 0.5 - Math.random());
+    return shuffledSongs.slice(0, count);
+  };
 
   return (
     <div>
@@ -34,8 +49,8 @@ export const Playlist = (props) => {
           ></img>
         </div>
         <div className="playlist-titles">
-          <h5 className="playlist-subtitle">Generada del Cupido Musical</h5>
-          <h3 className="playlist-title">Playlist Generada</h3>
+          <h5 className="playlist-subtitle">{props.subTitle}</h5>
+          <h3 className="playlist-title">{props.title}</h3>
         </div>
         <div className="playlist-dots">
           <img
@@ -44,46 +59,37 @@ export const Playlist = (props) => {
           ></img>
         </div>
       </div>
-      <div className="playlist-box">
-        <div className="playlist-photoline-1">
-          <div className="playlist-photo1">
-            <img
-              className="playlist-photo-1"
-              src="../../../public/images/playlist-cover.jpg"
-            ></img>
-          </div>
-          <div className="playlist-photo1">
-            <img
-              className="playlist-photo-2"
-              src="../../../public/images/playlist-cover.jpg"
-            ></img>
-          </div>
-        </div>
-        <div className="playlist-photoline-2">
-          <div className="playlist-photo2">
-            <img
-              className="playlist-photo-3"
-              src="../../../public/images/playlist-cover.jpg"
-            ></img>
-          </div>
-          <div className="playlist-photo1">
-            <img
-              className="playlist-photo-4"
-              src="../../../public/images/playlist-cover.jpg"
-            ></img>
-          </div>
-        </div>
-      </div>
-      <PlaylistBar />
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <>
+        <RandomImgsPlaylist
+          randomSongs={getRandomPlaylistSongs(playlistsSongs, 4)}
+        />
+        <PlaylistBar />
       <Playlistbar2 />
       <NavBar />
       <Song />
-      <ul>
-        {allSongs.map((song) => (
-          <li key={song.id}>{song.song_name}</li>
+      <ul className="playlist-ul_song_render">
+        {playlistsSongs.map((song) => (
+          <li key={song.id}>
+            <div className="playlist-render_container">
+              <img
+                className="playlist-ul-rendered_img"
+                src={song.img}
+                alt={song.song_name}
+              ></img>
+              <p className="playlist-ul-render_title">{song.song_name}</p>
+            </div>
+          </li>
         ))}
       </ul>
-      <div></div>
+      </>
+      )}
+      
+      
     </div>
   );
 };
+
+export default Playlist;

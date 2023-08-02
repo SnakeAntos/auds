@@ -1,11 +1,21 @@
 import { Input } from "../Common/Input/input";
-import { useState, useEffect } from "react";
+import { useState} from "react";
 
-export const RegisterUser = () => {
+export const RegisterUser = ({setUsername, setPassword, username, password}) => {
   const [isChecked, setIsChecked] = useState(false);
 
   const handleCheckboxClick = () => {
     setIsChecked(!isChecked);
+  };
+
+  const handleUsernameChange = (event) => {
+    const { value } = event.target;
+    setUsername(value);
+  };
+
+  const handlePasswordChange = (event) => {
+    const { value } = event.target;
+    setPassword(value);
   };
 
   return (
@@ -16,9 +26,9 @@ export const RegisterUser = () => {
         </div>
         <form action="">
           <label>Nombre de usuario:</label>
-          <Input type="text" />
+          <Input type="text" value={username} onChange={handleUsernameChange}/>
           <label>Contraseña:</label>
-          <Input type="password" />
+          <Input type="password" value={password} onChange={handlePasswordChange}/>
         </form>
         <p>Deberá contener al menos 8 caracteres.</p>
         <div id="register-user-acceptterms" onClick={handleCheckboxClick}>

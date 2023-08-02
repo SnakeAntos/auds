@@ -8,6 +8,7 @@
   font-family: "Rubik", sans-serif;
   background: rgb(255,142,10);
   background: linear-gradient(180deg, rgba(255,142,10,0.3) 0%, rgba(253,254,255,1) 100%);
+  color:#26262e;
 }
 
 .musicaya-title {
@@ -59,7 +60,7 @@
   position: absolute;
   z-index: -2;
   border-radius: 0px 0px 0px 16px;
-  margin-top: 7px;
+  margin-top: 14px;
 }
 
 .photo-my2 {
@@ -72,7 +73,6 @@
 .title-cupido {
   font-family: "Rubik", sans-serif;
   position: absolute;
-  opacity: 70%;
 }
 
 .title-contextual {
@@ -85,6 +85,7 @@
   flex-direction: column;
   position: absolute;
   margin-left: 100px;
+  padding-top: 8px;
 }
 
 .text-cupido {
@@ -99,3 +100,17 @@
 background: rgb(255,142,10);
 background: linear-gradient(0deg, rgba(255,142,10,0.3) 0%, rgba(253,254,255,1) 100%);
 }
+
+.musicaya-container a{
+  color:#26262e;
+}
+
+.musicaya-container a:visited{
+  color:#26262e;
+}
+
+.musicaya-btn1 button{
+position: relative;
+top: 14px;
+}
+

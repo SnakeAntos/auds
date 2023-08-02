@@ -6,10 +6,11 @@ import { useState } from "react";
 import { ButtonOrange } from "../Common/Button/buttonOrange";
 import { useAuth } from "../../context/authContext";
 import { useNavigate } from "react-router-dom";
+import ArrowBack from "../../../public/images/arrow-back.png"
 
 export const LogIn = (props) => {
   const [showRecupCont, setShowRecupCont] = useState(false);
-  const {login, user} = useAuth()
+  const {login, error} = useAuth()
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -45,18 +46,27 @@ export const LogIn = (props) => {
     setShowRecupCont(true);
   };
 
-  const handleLogin = () => {
-    login(username, password)
-    .then(data => {
-      if (data.accessToken) {
-        navigate("/home");
-      } else {
-        console.log("Error: No se recibió el token de acceso.");
-      }
-    })
-    .catch(error => {
-      console.error("Error al iniciar sesión:", error);
-    });
+//Esta no funciona pero esta un poco mas cerca de la solución
+  // const handleLogin = async () => {
+  //   const resultado = await login(username, password)
+  //   console.log(resultado)
+  //   resultado.then((data) => { 
+  //     console.log(data)})
+  //   .catch(error => {
+  //     console.log(error)
+  //   })
+  //   error == null ? navigate("/home") : console.log(error)
+  //   };
+
+//esta deja entrar pero no trae info
+  const handleLogin = async () => {
+    try {
+      const resultado = await login(username, password);
+      console.log(resultado);
+      navigate("/home");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleUsernameChange = (event) => {
@@ -77,7 +87,7 @@ export const LogIn = (props) => {
         <>
           <div className="login-nav">
             <img
-              src="../../../public/images/arrow-back.png"
+              src={ArrowBack}
               className="login-left-arrow"
               alt="Flecha hacia atrás"
               onClick={handleGoBack}

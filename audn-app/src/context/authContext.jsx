@@ -10,19 +10,26 @@ const useAuth = () => {
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
-    const login = (email, password) => {
-        checkCredentials(email, password).then(data =>{
-        if(data.token){
+    const [error, setError] = useState(null)
+    const login =  async (email, password) => {
+        const data = await checkCredentials(email, password)
+        .then(data => {if(data.accessToken){
             setUser(data)
-            localStorage.setItem('token', JSON.stringify(data))
-        }
-        });
-    }
+            localStorage.setItem('accessToken', JSON.stringify(data));
+            localStorage.setItem('username', email);
+        } }) 
+        .catch((error) => {
+            console.log(error)
+            setError(error);
+          });
+          return data
+    };
+
     const logout = () => {
-        localStorage.removeItem('token')
+        localStorage.removeItem('accessToken')
         setUser(null);
       }
-    return <authContext.Provider value={{ user, login, logout }}>{children}</authContext.Provider>;
+    return <authContext.Provider value={{ user, login, logout, error }}>{children}</authContext.Provider>;
 }
 
 
