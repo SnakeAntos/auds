@@ -13,12 +13,13 @@ export const Playlist = (props) => {
   const [playlistsSongs, setPlaylistsSongs] = useState([]);
   const playlistId = props.playlistId;
   const [isLoading, setIsLoading] = useState(false);
+  const baseUrl = import.meta.env.VITE_AUDN_API;
 
   const fetchPlaylistSongs = async (playlistId) => {
     setIsLoading(true);
     try {
       const response = await fetch(
-        `http://localhost:3001/playlists/getsongs/${playlistId}`
+        `${baseUrl}/playlists/getsongs/${playlistId}`
       );
       const data = await response.json();
       setPlaylistsSongs(data);
@@ -61,11 +62,11 @@ export const Playlist = (props) => {
       {isLoading ? (
         <Loading />
       ) : (
+        <>
         <RandomImgsPlaylist
           randomSongs={getRandomPlaylistSongs(playlistsSongs, 4)}
         />
-      )}
-      <PlaylistBar />
+        <PlaylistBar />
       <Playlistbar2 />
       <NavBar />
       <Song />
@@ -83,6 +84,9 @@ export const Playlist = (props) => {
           </li>
         ))}
       </ul>
+      </>
+      )}
+      
       
     </div>
   );
