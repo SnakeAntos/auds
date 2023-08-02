@@ -4,10 +4,10 @@ import { NavBar } from "../../components/NavBar/NavBar";
 // import { useAuth } from "../../context/authContext";
 // import { useEffect } from "react";
 // import { useNavigate } from "react-router";
-import Icon1 from "../../../public/images/history.svg";
-import Icon2 from "../../../public/images/bell.png";
-import Image1 from "../../../public/images/musicaYa1.png";
-import Image2 from "../../../public/images/musicaYa2.png";
+import Icon1 from "/images/history.svg";
+import Icon2 from "/images/bell.png";
+import Image1 from "/images/musicaYa1.png";
+import Image2 from "/images/musicaYa2.png";
 
 export const Home1 = () => {
   return (
