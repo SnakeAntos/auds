@@ -14,7 +14,7 @@ export const Search = () => {
     const [searchResults, setSearchResults] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
 
-    const apiUrl = "http://localhost:3001";
+    const apiUrl = import.meta.env.VITE_AUDN_API;
 
     const handleInputFocus = () => {
       setInputFocused(true);
