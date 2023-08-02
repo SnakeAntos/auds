@@ -4,7 +4,7 @@ import { ButtonMusicaContextual } from "../../components/Common/Button/buttonMus
 import { ButtonGrey } from "../../components/Common/Button/buttonGrey";
 import { ButtonsMusicaYa } from "../../components/Common/Button/buttonsMusicaYa";
 import { useState, useEffect } from "react";
-import LeftArrow from "../../../public/images/left-arrow.png"
+import LeftArrow from "/images/left-arrow.png"
 
 const fetchSongsByGenre = async (genre) => {
   try {

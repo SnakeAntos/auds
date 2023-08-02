@@ -6,7 +6,7 @@ import { ProfilePlaylistItem } from "./profilePlaylistItem";
 // import { useAuth } from "../../context/authContext";
 // import { useNavigate } from "react-router";
 // import { fetchUserDataByUsername } from "../../services/audn-API";
-import ConfigIcon from "../../../public/images/config.svg"
+import ConfigIcon from "/images/config.svg"
 
 
 export const Profile = () => {
