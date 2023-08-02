@@ -16,11 +16,13 @@ const AuthProvider = ({ children }) => {
         .then(data => {if(data.accessToken){
             setUser(data)
             localStorage.setItem('accessToken', JSON.stringify(data));
+            localStorage.setItem('username', email);
         } }) 
         .catch((error) => {
             console.log(error)
             setError(error);
           });
+          return data
     };
 
     const logout = () => {

@@ -15,7 +15,7 @@ const BASE_URL = "http://localhost:3001"
     return fetch(url, options)
   };
   
-  export const fetchUserDataByUsername = async (username) => {
+  export const fetchUserDataByUsername = async (username, token) => {
     const endpoint = `/users/${username}`;
     const url = `${BASE_URL}${endpoint}`;
     try {
@@ -23,7 +23,7 @@ const BASE_URL = "http://localhost:3001"
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          // Aquí puedes agregar los headers necesarios para autenticación, como el accessToken si es necesario.
+          "audn-access-token": token,
         },
       });
       if (!response.ok) {

@@ -53,6 +53,8 @@ const registerNewUser = async () => {
     });
     const data = await response.json();
     if (data.accessToken) {
+      localStorage.setItem('accessToken', data.accessToken);
+      localStorage.setItem('username', username);
       navigate("/home")
     } else {setError(true)}
     console.log(data); // Aquí puedes hacer algo con la respuesta del backend, por ejemplo, mostrar un mensaje de éxito
