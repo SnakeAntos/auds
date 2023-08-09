@@ -30,6 +30,17 @@ export const MusicaContextual = (props) => {
     clima: null,
   });
 
+  const [isPressed, setIsPressed] = useState(false);
+
+  const handleButtonPress = () => {
+    setIsPressed(true);
+    setSelectedGenre(text);
+  };
+
+  const handleButtonRelease = () => {
+    setIsPressed(false);
+  };
+
   const genres = [
     "Rock",
     "Country",
@@ -132,6 +143,26 @@ export const MusicaContextual = (props) => {
   // Function to apply the orange color to the "Crear Playlist" button
   const isButtonOrange = areAllOptionsSelected();
 
+  const [isMenuOpen, setMenuOpen] = useState(false);
+
+  const handleMenuToggle = () => {
+    setMenuOpen(!isMenuOpen);
+  };
+
+  const handleButtonClick = () => {
+    onMenuToggle();
+  };
+
+  const areAllGenresSelected = () => {
+    return buttonTexts.every((genre) => genre === selectedGenre);
+  };
+
+  // Función para manejar la selección de géneros
+  const handleGenreSelect = (genre) => {
+    setSelectedGenre(genre);
+    setIsButtonOrange(areAllGenresSelected()); // Actualiza el estado isButtonOrange
+  };
+
   return (
     <div className="musica-cont-nav">
       <div className="musica-cont-header">
@@ -152,6 +183,8 @@ export const MusicaContextual = (props) => {
             text="Actividad"
             textColor="grey"
             options={menuOptions}
+            isOpen={isMenuOpen}
+            onMenuToggle={handleMenuToggle}
           />
         </div>
         <div>
@@ -160,7 +193,12 @@ export const MusicaContextual = (props) => {
             text="Estado de Animo"
             textColor="grey"
             options={menuOptions1}
+
+            isOpen={isMenuOpen}
+            onMenuToggle={handleMenuToggle}
+
             areAllOptionsSelected={areAllOptionsSelected}
+
           />
         </div>
         <div>
@@ -169,13 +207,41 @@ export const MusicaContextual = (props) => {
             text="Clima"
             textColor="grey"
             options={menuOptions2}
+
+            isOpen={isMenuOpen}
+            onMenuToggle={handleMenuToggle}
+
             areAllOptionsSelected={areAllOptionsSelected}
+
           />
         </div>
       </div>
       <div className="box">
         <h3 className="musicacont-title1">Selecciona hasta 3 generos:</h3>
         <div className="musica-contextual-container">
+
+          <ul>
+            {songs.map((song) => (
+              <li key={song.id_song}>{song.song_name}</li>
+            ))}
+          </ul>
+          <div className="musica-contextual-box">
+            {buttonTexts.map((text, index) => (
+              <div key={index} className="musica-cont-buttons-fit">
+                <ButtonsMusicaYa
+                  className={
+                    isPressed && text == selectedGenre
+                      ? "text-button-pressed"
+                      : ""
+                  }
+                  text={text}
+                  setIsPressed={setIsPressed}
+                  selectedGenre={selectedGenre}
+                  setSelectedGenre={setSelectedGenre}
+                />
+              </div>
+            ))}
+
           <div className="genre-song-list">
             <ul>
               {songs.map((song) => (
@@ -194,11 +260,13 @@ export const MusicaContextual = (props) => {
               ))}
               <div></div>
             </div>
+
           </div>
         </div>
       </div>
       <div className="crear-playlist-button">
         <ButtonGrey
+          className="create-playlist"
           text="Crear Playlist"
           style={{ backgroundColor: isButtonOrange ? "orange" : "grey" }}
           onChange={areAllOptionsSelected}

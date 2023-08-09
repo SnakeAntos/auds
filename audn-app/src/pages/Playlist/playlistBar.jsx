@@ -9,7 +9,7 @@ export const PlaylistBar = () => {
           <div className="audn-bar-nav">
             <img
               className="playlist-icon1"
-              src="../../../public/images/audn-logo.svg"
+              src="../../../public/images/logoaudn.svg"
             ></img>
           </div>
 
