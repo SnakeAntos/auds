@@ -3,39 +3,30 @@ import { useEffect, useState } from "react";
 import { NavBar } from "../../components/NavBar/NavBar";
 import {ButtonOrange} from "../../components/Common/Button/buttonOrange"
 import { ProfilePlaylistItem } from "./profilePlaylistItem";
-// import { useAuth } from "../../context/authContext";
-// import { useNavigate } from "react-router";
-// import { fetchUserDataByUsername } from "../../services/audn-API";
+import { useAuth } from "../../context/authContext";
+import { useNavigate } from "react-router";
+import { fetchUserDataByUsername } from "../../services/audn-API";
 import ConfigIcon from "../../../public/images/config.svg"
+
 
 
 export const Profile = () => {
 
-  // const [userData, setUserData] = useState({});
-  // const { user } = useAuth();
+  const [userData, setUserData] = useState();
+  const { user } = useAuth();
 
-  // useEffect(() => {
-  //   // Función para obtener el user_name desde el accessToken
-  //   const getUsernameFromAccessToken = () => {
-  //     if (user && user.username) {
-  //       return user.username; // Obtener el user_name directamente desde el contexto useAuth
-  //     }
-  //     return null;
-  //   };
-
-  //   const username = getUsernameFromAccessToken();
-
-  //   // Si se obtiene el username del accessToken, realizar la solicitud para obtener los datos del usuario
-  //   if (username) {
-  //     fetchUserDataByUsername(username)
-  //       .then((userData) => {
-  //         setUserData(userData); // Actualizar el estado con los datos del usuario obtenidos
-  //       })
-  //       .catch((error) => {
-  //         console.error("Error al obtener los datos del usuario: ", error);
-  //       });
-  //   }
-  // }, [user]);
+  useEffect(() => {
+    let username = null
+    let accessToken = null
+    if(user !== null) {
+      username = user 
+    } else {
+      username = localStorage.getItem('username');
+      accessToken = localStorage.getItem('accessToken');
+    }
+    fetchUserDataByUsername(username,accessToken)
+    .then(data => (setUserData(data)))
+  },[])
 
 
   return (
@@ -46,8 +37,8 @@ export const Profile = () => {
         </div>
         <div id="profile-info-container">
           <img src="../../../images/profile-image.jpg" alt="" />
-          <h1>Mara</h1>
-          <h4>@mara_pg</h4>
+          <h1>{userData && userData.nickname}</h1>
+          <h4>@{userData && userData.user_name}</h4>
         </div>
         <div id="profile-playlists">
           <div id="profile-playlists-title">

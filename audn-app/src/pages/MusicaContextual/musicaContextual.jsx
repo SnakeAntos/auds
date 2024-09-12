@@ -5,6 +5,8 @@ import { ButtonGrey } from "../../components/Common/Button/buttonGrey";
 import { ButtonsMusicaYa } from "../../components/Common/Button/buttonsMusicaYa";
 import { useState, useEffect } from "react";
 import LeftArrow from "../../../public/images/left-arrow.png"
+import { Link } from "react-router-dom";
+
 
 const fetchSongsByGenre = async (genre) => {
   try {
@@ -21,6 +23,7 @@ export const MusicaContextual = (props) => {
   const [songs, setSongs] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedGenre, setSelectedGenre] = useState(null);
+  const baseUrl = import.meta.env.VITE_AUDN_API;
   const [selectedOptions, setSelectedOptions] = useState({
     ocasion: null,
     estadoAnimo: null,
@@ -84,7 +87,7 @@ export const MusicaContextual = (props) => {
 
   const fetchSongsByGenre = async (genre) => {
     try {
-      const response = await fetch(`http://localhost:3001/songs/allsongs`);
+      const response = await fetch(`${baseUrl}/songs/allsongs`);
       const data = await response.json();
 
       return data;
@@ -133,10 +136,12 @@ export const MusicaContextual = (props) => {
     <div className="musica-cont-nav">
       <div className="musica-cont-header">
         <div className="musica-cont">
+        <Link to="/home">
           <img
             src={LeftArrow}
             className="login-left-arrow"
-          ></img>
+          />
+        </Link>
           <h3 className="musica-cont-title">Musica Contextual</h3>
         </div>
       </div>

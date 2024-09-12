@@ -1,4 +1,3 @@
-
 import React from "react";
 
 import { ButtonOrange } from "../../components/Common/Button/buttonOrange";
@@ -8,7 +7,7 @@ import { MusicCurrentCupid } from "../../pages/CupidoMusical/MusicCurrentCupid";
 import { CurrentMatches } from "../../pages/CupidoMusical/CurrentMatches";
 import { useState, useEffect } from "react";
 import Loading from "../../components/Common/Loading";
-import Playlist from "../Playlist/playlist.jsx"
+import Playlist from "../Playlist/playlist.jsx";
 
 export const CupidoMusical = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -16,10 +15,11 @@ export const CupidoMusical = () => {
   const [likedSongs, setLikedSongs] = useState([]);
   const [showPlaylist, setShowPlaylist] = useState(false);
   const [playlistId, setPlaylistId] = useState(0);
+  const baseUrl = import.meta.env.VITE_AUDN_API;
 
   useEffect(() => {
     setIsLoading(true);
-    fetch("http://localhost:3001/songs/random/obtain")
+    fetch(`${baseUrl}/songs/random/obtain`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("error al acceder al endpoint");
@@ -36,7 +36,7 @@ export const CupidoMusical = () => {
 
   const handleNextSong = () => {
     setIsLoading(true);
-    fetch("http://localhost:3001/songs/random/obtain")
+    fetch(`${baseUrl}/songs/random/obtain`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("error al acceder al endpoint");
@@ -57,7 +57,7 @@ export const CupidoMusical = () => {
     const playlistName = "Cupid playlist";
     const userId = 1; //esto se obtendria mediante el token...
 
-    fetch("http://localhost:3001/playlists/new", {
+    fetch(`${baseUrl}/playlists/new`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -69,31 +69,26 @@ export const CupidoMusical = () => {
     })
       .then((response) => {
         if (!response.ok) {
-          console.log("error", response)
+          console.log("error", response);
           throw new Error("Error al crear playlist");
-
-        }        
+        }
         return response.json();
       })
-      .then((data) => {  
-        console.log("el id es",data.id_playlist);      
+      .then((data) => {
+        console.log("el id es", data.id_playlist);
         const actualPlaylistId = Number(data.id_playlist); //no puedo con esto// si pongo data.id queda undefined
         setPlaylistId(actualPlaylistId);
         setIsLoading(false);
         handleAddSongsToPlaylist(actualPlaylistId, songsIdList);
         setShowPlaylist(true);
-        
       })
       .catch((error) => {
         console.error("Error al crear la playlist:", error);
       });
-      
   };
-
-  // Función para agregar las canciones a la playlist una vez creada
   const handleAddSongsToPlaylist = (playlistId, songsIdList) => {
-    songsIdList.forEach((songId) => {      
-      fetch("http://localhost:3001/songslists/new", {
+    songsIdList.forEach((songId) => {
+      fetch(`${baseUrl}/songslists/new`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -117,50 +112,59 @@ export const CupidoMusical = () => {
         });
     });
   };
-
   const handleLikedSong = () => {
     setLikedSongs((prevLikedSongs) => [...prevLikedSongs, songRandom]);
   };
   return (
     <>
-    {showPlaylist ? ( 
-      <Playlist playlistId={playlistId} title="Tu lista de cupido" subTitle="lista generada a partir de cupido musical" />) 
-      : (      
-      <div className="cupidoMusical-container">
-        {isLoading ? (
-          <>
-            <Loading/>
-            <ComponentTitle title="Cupido Musical" />
-            <MusicCurrentCupid
-              onLikeSong={handleLikedSong}
-              onNextSong={handleNextSong}
-              song={songRandom}
-            />
-            <CurrentMatches likedSongs={likedSongs} title="Matches actuales" />
-            <ButtonOrange
-              onClick={handleCupidPlaylist}
-              text="Crear Playlist"
-            />
-          </>
-        ) : (
-          <>
-            <ComponentTitle title="Cupido Musical" />
-            <MusicCurrentCupid
-              onLikeSong={handleLikedSong}
-              onNextSong={handleNextSong}
-              song={songRandom}
-            />
-            <CurrentMatches likedSongs={likedSongs} title="Matches actuales" />
-            <ButtonOrange
-              onClick={handleCupidPlaylist}
-              text="Crear Playlist"
-            />
-          </>
-        )}
-      </div>
-    )}
-  </>
-);
+      {showPlaylist ? (
+        <Playlist
+          playlistId={playlistId}
+          title="Tu lista de cupido"
+          subTitle="lista generada a partir de cupido musical"
+        />
+      ) : (
+        <div className="cupidoMusical-container">
+          {isLoading ? (
+            <>
+              <Loading />
+              <ComponentTitle title="Cupido Musical" />
+              <MusicCurrentCupid
+                onLikeSong={handleLikedSong}
+                onNextSong={handleNextSong}
+                song={songRandom}
+              />
+              <CurrentMatches
+                likedSongs={likedSongs}
+                title="Matches actuales"
+              />
+              <ButtonOrange
+                onClick={handleCupidPlaylist}
+                text="Crear Playlist"
+              />
+            </>
+          ) : (
+            // Esto esta innecesariamente repetido
+            <>
+              <ComponentTitle title="Cupido Musical" />
+              <MusicCurrentCupid
+                onLikeSong={handleLikedSong}
+                onNextSong={handleNextSong}
+                song={songRandom}
+              />
+              <CurrentMatches
+                likedSongs={likedSongs}
+                title="Matches actuales"
+              />
+              <ButtonOrange
+                onClick={handleCupidPlaylist}
+                text="Crear Playlist"
+              />
+            </>
+          )}
+        </div>
+      )}
+    </>
+  );
 };
 export default CupidoMusical;
-
